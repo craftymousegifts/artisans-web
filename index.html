@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ArtisansWeb — UK Handmade Boutique Marketplace — Opening Soon</title>
+<meta name="description" content="The UK's handmade boutique marketplace. Unique handmade gifts, jewellery, candles, art and a dedicated wellness space. Opening soon."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --gold:#C9A84C;--gold-light:#E8D08A;--gold-dark:#A07830;
+  --blush:#E8B4B8;--blush-deep:#D4919A;--blush-pale:#F9EEF0;
+  --cream:#FAF6F1;--charcoal:#2A1F1A;--muted:#6B5A52;
+  --sage:#7A9E7E;--sage-pale:#EEF4EE;--sage-mid:#4E7A52;
+  --lavender:#9B8BB4;--lavender-pale:#F0EDF7;
+  --amethyst:#7B4FA6;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--charcoal);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+
+/* ══ HERO ══ */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:3rem clamp(1.5rem,6vw,4rem) 4rem;overflow:hidden;
+  background:#FAF6F1;
+}
+.shopfront{position:absolute;bottom:0;left:0;right:0;z-index:0;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;height:50%;overflow:hidden;}
+.shopfront svg{width:min(1000px,120vw);height:auto;opacity:0.07;}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(250,246,241,1) 0%,rgba(250,246,241,0.98) 45%,rgba(250,246,241,0.82) 75%,rgba(250,246,241,0.6) 100%);}
+.hero-dots{position:absolute;inset:0;z-index:1;background-image:radial-gradient(circle,rgba(201,168,76,0.08) 1px,transparent 1px);background-size:28px 28px;}
+.hero-glow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:360px;background:radial-gradient(ellipse at 50% 20%,rgba(232,180,184,0.2) 0%,transparent 70%);z-index:1;pointer-events:none;}
+.hero-content{position:relative;z-index:2;max-width:880px;width:100%;}
+
+.logo-img{width:clamp(160px,22vw,210px);height:clamp(160px,22vw,210px);object-fit:contain;margin:0 auto 1.2rem;display:block;mix-blend-mode:multiply;filter:drop-shadow(0 4px 16px rgba(201,168,76,0.15));}
+
+.store-banner{display:inline-flex;align-items:center;gap:0.6rem;background:var(--charcoal);color:var(--gold-light);font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.55em 1.4em;border-radius:2em;margin-bottom:1.4rem;}
+.store-banner .blink{width:7px;height:7px;background:var(--blush);border-radius:50%;flex-shrink:0;animation:blink 1.8s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
+
+.hero-h1{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(2.2rem,6vw,4.5rem);line-height:1.06;color:var(--charcoal);margin-bottom:0.6rem;}
+.hero-h1 em{font-style:italic;color:var(--gold-dark);}
+
+.store-msg{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1rem,2vw,1.2rem);color:var(--muted);max-width:600px;margin:0 auto 2rem;line-height:1.7;}
+.store-msg strong{color:var(--charcoal);font-style:normal;font-weight:700;}
+
+/* ══ AUDIENCE PILLS ══ */
+.audience-selector{margin-bottom:2rem;}
+.audience-label{font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:0.9rem;}
+.pill-row{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;}
+.pill-btn{display:flex;align-items:center;gap:0.5rem;padding:0.75em 1.6em;border-radius:3em;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:600;cursor:pointer;text-decoration:none;border:2px solid var(--gold);background:transparent;color:var(--gold-dark);transition:all 0.25s;letter-spacing:0.02em;}
+.pill-btn:hover{background:rgba(201,168,76,0.08);transform:translateY(-1px);}
+.pill-btn.active{background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));border-color:transparent;color:#2A1F1A;box-shadow:0 4px 20px rgba(201,168,76,0.35);transform:translateY(-2px);}
+.pill-btn .pill-icon{font-size:1.1rem;}
+
+/* ══ BENEFIT PANELS ══ */
+.benefit-panels{overflow:hidden;}
+.panel{display:none;animation:fadeSlide 0.35s ease;}
+.panel.active{display:block;}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+
+.panel-inner{background:#fff;border:1.5px solid rgba(201,168,76,0.22);border-radius:16px;padding:2.2rem clamp(1.2rem,4vw,2.5rem);text-align:left;box-shadow:0 4px 32px rgba(42,31,26,0.06);max-width:800px;margin:0 auto;}
+.panel-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,1.9rem);font-weight:700;color:var(--charcoal);margin-bottom:0.4rem;line-height:1.15;}
+.panel-headline em{font-style:italic;color:var(--gold-dark);}
+.panel-sub{font-size:0.88rem;color:var(--muted);font-weight:300;margin-bottom:1.6rem;line-height:1.65;}
+
+.panel-benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1.6rem;}
+.pb{display:flex;gap:0.75rem;align-items:flex-start;padding:1rem;background:var(--cream);border-radius:10px;border:1px solid rgba(201,168,76,0.12);}
+.pb-icon{font-size:1.3rem;flex-shrink:0;margin-top:0.1rem;}
+.pb-text h4{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--charcoal);margin-bottom:0.2rem;}
+.pb-text p{font-size:0.78rem;color:var(--muted);line-height:1.55;font-weight:300;}
+
+.fee-highlight{display:flex;align-items:center;gap:0.8rem;background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(232,180,184,0.08));border:1.5px solid rgba(201,168,76,0.25);border-radius:10px;padding:1rem 1.3rem;margin-bottom:1.4rem;}
+.fee-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:var(--gold-dark);line-height:1;flex-shrink:0;}
+.fee-text{font-size:0.82rem;color:var(--charcoal);line-height:1.5;}
+.fee-text strong{font-weight:700;}
+
+.panel-cta{display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));color:#2A1F1A;border:none;border-radius:6px;padding:0.9rem 2rem;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:700;cursor:pointer;text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 20px rgba(201,168,76,0.35);}
+.panel-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,168,76,0.45);}
+.panel-cta-outline{display:inline-flex;align-items:center;gap:0.5rem;background:#fff;color:var(--gold-dark);border:1.5px solid var(--gold);border-radius:6px;padding:0.9rem 2rem;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:600;cursor:pointer;text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:all 0.2s;margin-left:0.7rem;}
+.panel-cta-outline:hover{background:rgba(201,168,76,0.06);transform:translateY(-2px);}
+
+.category-grid{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.4rem;}
+.cat-pill{background:var(--blush-pale);border:1px solid rgba(232,180,184,0.5);color:var(--charcoal);font-size:0.75rem;font-weight:500;padding:0.4em 1em;border-radius:2em;}
+
+.trust-bar{display:flex;align-items:center;justify-content:center;gap:clamp(0.8rem,2.5vw,1.8rem);flex-wrap:wrap;margin-top:1.8rem;}
+.trust-item{display:flex;align-items:center;gap:0.4rem;font-size:0.76rem;font-weight:500;color:var(--muted);}
+.tdot{width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0;}
+
+.scroll-hint{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:0.3rem;color:var(--gold-dark);opacity:0.45;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;}
+.scroll-hint svg{animation:bob 2.2s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
+@media(prefers-reduced-motion:reduce){.scroll-hint svg,.blink{animation:none;}}
+
+/* ══ TICKER ══ */
+.ticker-wrap{background:var(--charcoal);padding:0.9rem 0;overflow:hidden;}
+.ticker-track{display:flex;width:max-content;animation:tick 35s linear infinite;}
+.ticker-track:hover{animation-play-state:paused;}
+@keyframes tick{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+@media(prefers-reduced-motion:reduce){.ticker-track{animation:none;}}
+.t-item{display:flex;align-items:center;gap:0.9rem;padding:0 1.6rem;white-space:nowrap;font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:rgba(250,246,241,0.5);}
+.t-gem{width:5px;height:5px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;}
+.t-item.feat{font-style:normal;font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);}
+.t-item.well{color:rgba(155,139,180,0.7);}
+
+/* ══ WELLNESS SECTION ══ */
+.wellness{
+  padding:6rem clamp(1.5rem,8vw,5rem);
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg, #1a1228 0%, #2a1f3d 40%, #1e2a1e 100%);
+}
+.wellness::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 50% 60% at 20% 50%, rgba(155,139,180,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 80% 30%, rgba(122,158,126,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(201,168,76,0.08) 0%, transparent 50%);
+}
+/* Subtle star-field dots */
+.wellness::after{
+  content:'';position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle, rgba(201,168,76,0.25) 1px, transparent 1px),
+    radial-gradient(circle, rgba(155,139,180,0.2) 1px, transparent 1px);
+  background-size:60px 60px, 90px 90px;
+  background-position:0 0, 30px 30px;
+}
+
+.wellness-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;}
+
+.wellness-eye{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--lavender);margin-bottom:1rem;
+}
+
+.wellness-h2{
+  font-family:'Cormorant Garamond',serif;font-weight:700;
+  font-size:clamp(2rem,5vw,3.5rem);
+  color:#FAF6F1;line-height:1.08;margin-bottom:0.8rem;
+}
+.wellness-h2 em{font-style:italic;color:var(--lavender);}
+
+.wellness-sub{
+  font-size:clamp(0.9rem,1.6vw,1.05rem);font-weight:300;
+  color:rgba(250,246,241,0.6);max-width:600px;margin-bottom:2.5rem;line-height:1.75;
+}
+
+/* Two-column layout: intro left, quote right */
+.wellness-intro{
+  display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;margin-bottom:3rem;
+}
+@media(max-width:700px){.wellness-intro{grid-template-columns:1fr;}}
+
+.wellness-quote{
+  background:rgba(155,139,180,0.1);
+  border-left:3px solid var(--lavender);
+  border-radius:0 10px 10px 0;
+  padding:1.4rem 1.6rem;
+  max-width:300px;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:1.1rem;
+  color:rgba(250,246,241,0.75);
+  line-height:1.65;
+  flex-shrink:0;
+}
+.wellness-quote cite{
+  display:block;margin-top:0.7rem;
+  font-style:normal;font-size:0.72rem;font-family:'DM Sans',sans-serif;
+  font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--lavender);opacity:0.8;
+}
+
+/* Product category cards */
+.wellness-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;
+  margin-bottom:3rem;
+}
+
+.w-card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(155,139,180,0.2);
+  border-radius:14px;
+  padding:1.6rem;
+  transition:border-color 0.25s,background 0.25s,transform 0.2s;
+  cursor:default;
+}
+.w-card:hover{
+  border-color:rgba(155,139,180,0.45);
+  background:rgba(155,139,180,0.07);
+  transform:translateY(-3px);
+}
+.w-card-icon{font-size:2rem;margin-bottom:0.8rem;display:block;}
+.w-card h3{
+  font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;
+  color:#FAF6F1;margin-bottom:0.4rem;
+}
+.w-card p{font-size:0.8rem;color:rgba(250,246,241,0.5);line-height:1.6;font-weight:300;}
+.w-tag{
+  display:inline-block;margin-top:0.7rem;
+  font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--lavender);background:rgba(155,139,180,0.1);
+  border:1px solid rgba(155,139,180,0.25);padding:0.22em 0.7em;border-radius:2em;
+}
+
+/* Hamsa spotlight */
+.hamsa-spotlight{
+  background:rgba(201,168,76,0.06);
+  border:1.5px solid rgba(201,168,76,0.2);
+  border-radius:14px;
+  padding:2rem;
+  display:flex;gap:1.5rem;align-items:flex-start;
+  margin-bottom:2.5rem;
+}
+@media(max-width:600px){.hamsa-spotlight{flex-direction:column;gap:1rem;}}
+.hamsa-icon{font-size:3rem;flex-shrink:0;line-height:1;}
+.hamsa-text h3{
+  font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;
+  color:var(--gold-light);margin-bottom:0.4rem;
+}
+.hamsa-text p{font-size:0.84rem;color:rgba(250,246,241,0.58);line-height:1.65;font-weight:300;margin-bottom:0.6rem;}
+.hamsa-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.h-tag{background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);color:var(--gold-light);font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.28em 0.75em;border-radius:2em;}
+
+.wellness-cta-row{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-lavender{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:linear-gradient(135deg,#5a3a8a,var(--lavender),#b8aad4);
+  color:#fff;border:none;border-radius:6px;padding:0.9rem 2rem;
+  font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:700;
+  cursor:pointer;text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;
+  transition:transform 0.2s,box-shadow 0.2s;
+  box-shadow:0 4px 20px rgba(123,79,166,0.35);
+}
+.btn-lavender:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(123,79,166,0.5);}
+.btn-lavender-outline{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:transparent;color:var(--lavender);
+  border:1.5px solid var(--lavender);border-radius:6px;padding:0.9rem 2rem;
+  font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:600;
+  cursor:pointer;text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:all 0.2s;
+}
+.btn-lavender-outline:hover{background:rgba(155,139,180,0.1);transform:translateY(-2px);}
+
+/* ══ WHY DARK SECTION ══ */
+.why{padding:5rem clamp(1.5rem,8vw,5rem);background:var(--charcoal);position:relative;overflow:hidden;}
+.why::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 80% 50%,rgba(232,180,184,0.05) 0%,transparent 60%);}
+.why-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;}
+.sec-eye{font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;display:block;}
+.why-h2{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(1.9rem,4.5vw,3.2rem);color:#FAF6F1;line-height:1.1;max-width:620px;margin-bottom:0.8rem;}
+.why-h2 em{font-style:italic;color:var(--blush);}
+.why-sub{font-size:0.92rem;font-weight:300;color:rgba(250,246,241,0.55);max-width:480px;margin-bottom:2.5rem;line-height:1.7;}
+
+.ad-reach{background:rgba(232,180,184,0.07);border:1px solid rgba(232,180,184,0.2);border-radius:10px;padding:1.6rem 2rem;margin-bottom:2.5rem;}
+.ad-reach h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--blush);margin-bottom:0.4rem;}
+.ad-reach p{font-size:0.86rem;color:rgba(250,246,241,0.55);line-height:1.7;font-weight:300;margin-bottom:0.9rem;}
+.ad-tags{display:flex;flex-wrap:wrap;gap:0.45rem;}
+.ad-tag{background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.22);color:var(--gold-light);font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.3em 0.8em;border-radius:2em;}
+
+.stat-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.stat-block{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.18);border-radius:10px;padding:1.3rem 1.6rem;flex:1 1 130px;}
+.sn{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:var(--gold-light);line-height:1;margin-bottom:0.2rem;}
+.sl{font-size:0.74rem;color:rgba(250,246,241,0.45);line-height:1.4;}
+
+/* ══ COMPARE ══ */
+.compare{padding:5rem clamp(1.5rem,8vw,5rem);background:var(--blush-pale);}
+.compare-inner{max-width:880px;margin:0 auto;text-align:center;}
+.cmp-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--charcoal);line-height:1.1;margin-bottom:0.6rem;}
+.cmp-h2 em{font-style:italic;color:var(--gold-dark);}
+.cmp-sub{font-size:0.88rem;color:var(--muted);font-weight:300;margin-bottom:2.2rem;line-height:1.7;}
+.compare-table{width:100%;border-collapse:collapse;text-align:left;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 32px rgba(42,31,26,0.06);}
+.compare-table th{padding:0.95rem 1.2rem;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fff;}
+.compare-table thead tr{background:var(--charcoal);}
+.compare-table thead th:nth-child(2){background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:#2A1F1A;}
+.compare-table td{padding:0.85rem 1.2rem;font-size:0.84rem;color:var(--charcoal);border-bottom:1px solid #f0eae8;}
+.compare-table tr:last-child td{border-bottom:none;}
+.compare-table tr:hover td{background:#faf6f1;}
+.check{color:#5a9e6f;font-weight:700;}.cross{color:#bbb;}
+.aw-col{font-weight:600;color:var(--gold-dark);}
+.compare-table td:nth-child(2){background:rgba(201,168,76,0.04);}
+
+/* ══ HOW ══ */
+.how{padding:5rem clamp(1.5rem,8vw,5rem);background:var(--cream);text-align:center;}
+.how-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.7rem);font-weight:700;color:var(--charcoal);margin-bottom:0.6rem;}
+.how-sub{font-size:0.9rem;color:var(--muted);font-weight:300;margin-bottom:2.8rem;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.7;}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;max-width:880px;margin:0 auto;background:rgba(201,168,76,0.15);border-radius:12px;overflow:hidden;}
+.step{background:var(--cream);padding:2rem 1.5rem;}
+.step-n{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:rgba(201,168,76,0.14);line-height:1;margin-bottom:0.4rem;}
+.step h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:0.4rem;}
+.step p{font-size:0.78rem;color:var(--muted);line-height:1.65;font-weight:300;}
+
+/* ══ EMAIL ══ */
+.email-sec{padding:5rem clamp(1.5rem,8vw,5rem);background:linear-gradient(160deg,#F9EAE8 0%,#FAF2E8 100%);text-align:center;position:relative;overflow:hidden;}
+.email-sec::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(201,168,76,0.09) 1px,transparent 1px);background-size:22px 22px;}
+.email-inner{position:relative;z-index:1;}
+.email-logo{width:80px;height:80px;object-fit:contain;margin:0 auto 1.3rem;display:block;mix-blend-mode:multiply;opacity:0.32;}
+.email-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--charcoal);margin-bottom:0.6rem;line-height:1.1;}
+.email-h2 em{font-style:italic;color:var(--gold-dark);}
+.email-p{font-size:0.92rem;color:var(--muted);font-weight:400;margin-bottom:1.8rem;line-height:1.7;}
+.email-row{display:flex;gap:0.7rem;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center;}
+.email-input{flex:1 1 200px;background:#fff;border:1.5px solid rgba(201,168,76,0.3);border-radius:4px;padding:0.88rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:0.93rem;color:var(--charcoal);outline:none;transition:border-color 0.2s;}
+.email-input::placeholder{color:rgba(107,90,82,0.5);}
+.email-input:focus{border-color:var(--gold);}
+.email-note{margin-top:0.85rem;font-size:0.72rem;color:var(--muted);}
+.email-success{display:none;align-items:center;justify-content:center;gap:0.5rem;color:var(--gold-dark);font-weight:600;font-size:0.92rem;}
+.email-success.show{display:flex;}
+
+/* ══ FOOTER ══ */
+footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.fl{display:flex;align-items:center;gap:0.75rem;text-decoration:none;}
+.footer-logo{width:36px;height:36px;object-fit:contain;mix-blend-mode:luminosity;opacity:0.65;}
+.fn{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:rgba(250,246,241,0.65);letter-spacing:0.05em;}
+.fn span{color:var(--gold);}
+.fr{display:flex;flex-direction:column;align-items:flex-end;gap:0.25rem;}
+.fr a{color:rgba(250,246,241,0.42);font-size:0.7rem;text-decoration:none;transition:color 0.2s;}
+.fr a:hover{color:var(--gold);}
+.fr span{color:rgba(250,246,241,0.22);font-size:0.66rem;}
+
+@media(max-width:600px){
+  .panel-benefits{grid-template-columns:1fr;}
+  .panel-cta-outline{margin-left:0;margin-top:0.6rem;}
+  .stat-row{gap:0.7rem;}.sn{font-size:2rem;}
+  .compare-table td,.compare-table th{padding:0.65rem 0.7rem;font-size:0.74rem;}
+  .steps{grid-template-columns:1fr 1fr;}
+  .wellness-grid{grid-template-columns:1fr;}
+  .wellness-cta-row{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="shopfront">
+    <svg viewBox="0 0 960 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="0" width="880" height="480" rx="4" fill="#C9A84C" opacity="0.4"/>
+      <rect x="40" y="0" width="880" height="480" rx="4" stroke="#C9A84C" stroke-width="2.5" fill="none"/>
+      <path d="M20 100 Q480 62 940 100 L940 148 Q480 122 20 148 Z" fill="#E8B4B8" opacity="0.6"/>
+      <path d="M20 148 Q50 134 80 148 Q110 134 140 148 Q170 134 200 148 Q230 134 260 148 Q290 134 320 148 Q350 134 380 148 Q410 134 440 148 Q470 134 500 148 Q530 134 560 148 Q590 134 620 148 Q650 134 680 148 Q710 134 740 148 Q770 134 800 148 Q830 134 860 148 Q890 134 920 148 Q935 134 940 148" stroke="#C9A84C" stroke-width="1.8" fill="none"/>
+      <rect x="300" y="10" width="360" height="54" rx="5" fill="#E8B4B8" opacity="0.45"/>
+      <rect x="300" y="10" width="360" height="54" rx="5" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+      <text x="480" y="44" text-anchor="middle" font-family="serif" font-size="21" font-weight="700" fill="#C9A84C" letter-spacing="4">ArtisansWeb</text>
+      <rect x="68" y="162" width="290" height="268" rx="4" fill="#FAF6F1" opacity="0.32"/>
+      <rect x="68" y="162" width="290" height="268" rx="4" stroke="#C9A84C" stroke-width="2" fill="none"/>
+      <line x1="213" y1="162" x2="213" y2="430" stroke="#C9A84C" stroke-width="1" opacity="0.45"/>
+      <line x1="68" y1="296" x2="358" y2="296" stroke="#C9A84C" stroke-width="1" opacity="0.45"/>
+      <rect x="602" y="162" width="290" height="268" rx="4" fill="#FAF6F1" opacity="0.32"/>
+      <rect x="602" y="162" width="290" height="268" rx="4" stroke="#C9A84C" stroke-width="2" fill="none"/>
+      <line x1="747" y1="162" x2="747" y2="430" stroke="#C9A84C" stroke-width="1" opacity="0.45"/>
+      <line x1="602" y1="296" x2="892" y2="296" stroke="#C9A84C" stroke-width="1" opacity="0.45"/>
+      <rect x="406" y="278" width="148" height="202" rx="4" fill="#FAF6F1" opacity="0.26"/>
+      <rect x="406" y="278" width="148" height="202" rx="4" stroke="#C9A84C" stroke-width="2" fill="none"/>
+      <path d="M406 300 Q480 258 554 300" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+      <circle cx="524" cy="384" r="5" fill="#C9A84C" opacity="0.55"/>
+      <line x1="190" y1="174" x2="190" y2="198" stroke="#C9A84C" stroke-width="1.2" opacity="0.65"/>
+      <rect x="122" y="198" width="136" height="64" rx="4" fill="#FAF6F1" opacity="0.95"/>
+      <rect x="122" y="198" width="136" height="64" rx="4" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+      <polygon points="190,194 194,200 190,206 186,200" fill="#C9A84C"/>
+      <text x="190" y="222" text-anchor="middle" font-family="serif" font-size="11.5" font-weight="700" fill="#C9A84C" letter-spacing="3">OPENING</text>
+      <text x="190" y="240" text-anchor="middle" font-family="sans-serif" font-size="9.5" font-weight="600" fill="#E8B4B8" letter-spacing="4">SOON</text>
+      <line x1="140" y1="248" x2="240" y2="248" stroke="#C9A84C" stroke-width="0.7" opacity="0.38"/>
+      <text x="190" y="257" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#C9A84C" letter-spacing="1" opacity="0.6">artisansweb.co.uk</text>
+      <rect x="382" y="288" width="16" height="26" rx="2" fill="#C9A84C" opacity="0.28"/>
+      <rect x="562" y="288" width="16" height="26" rx="2" fill="#C9A84C" opacity="0.28"/>
+      <rect x="40" y="462" width="880" height="16" rx="2" fill="#C9A84C" opacity="0.2"/>
+    </svg>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-content">
+    <img class="logo-img" src="logo.png" alt="ArtisansWeb — Handmade Boutique"/>
+
+    <div class="store-banner"><span class="blink"></span>
+      Our doors open soon — we&apos;re stocking the shelves
+    </div>
+
+    <h1 class="hero-h1">
+      The boutique marketplace<br/>for <em>unique handmade goods</em>
+    </h1>
+
+    <p class="store-msg">
+      We&apos;re busy curating our shelves with the most <strong>beautiful, unique handmade items</strong>
+      from talented UK makers — including a dedicated wellness space for the soul.
+      Pop the kettle on. We&apos;ll be open before you know it.
+    </p>
+
+    <div class="audience-selector">
+      <p class="audience-label">Tell us who you are and we&apos;ll show you what&apos;s in store for you</p>
+      <div class="pill-row">
+        <button class="pill-btn active" onclick="showPanel('maker')" id="pill-maker">
+          <span class="pill-icon">🧵</span> I&apos;m a Maker
+        </button>
+        <button class="pill-btn" onclick="showPanel('shopper')" id="pill-shopper">
+          <span class="pill-icon">🛍️</span> I&apos;m looking for handmade items
+        </button>
+      </div>
+    </div>
+
+    <div class="benefit-panels">
+
+      <!-- MAKER PANEL -->
+      <div class="panel active" id="panel-maker">
+        <div class="panel-inner">
+          <h2 class="panel-headline">Your craft deserves its own <em>proper shop</em></h2>
+          <p class="panel-sub">Open your branded shop inside the UK&apos;s only marketplace built exclusively for handmade sellers — and keep every single penny you earn.</p>
+          <div class="fee-highlight">
+            <div class="fee-num">0%</div>
+            <div class="fee-text"><strong>Zero commission. Zero selling fees.</strong><br/>One flat subscription from £10/month. No surprises, no percentage stolen from every sale.</div>
+          </div>
+          <div class="panel-benefits">
+            <div class="pb"><div class="pb-icon">🏪</div><div class="pb-text"><h4>Your branded shop</h4><p>Your logo, colours, and story. Not a generic listing. Looks like you paid thousands for it.</p></div></div>
+            <div class="pb"><div class="pb-icon">💳</div><div class="pb-text"><h4>Payments handled</h4><p>Stripe checkout built in. Orders land in your dashboard, money goes straight to your account.</p></div></div>
+            <div class="pb"><div class="pb-icon">📋</div><div class="pb-text"><h4>Legally sorted</h4><p>Bespoke privacy policy, T&Cs and returns policy generated with your business name. Included.</p></div></div>
+            <div class="pb"><div class="pb-icon">🎯</div><div class="pb-text"><h4>We market your shop for you</h4><p>We run targeted ads, social campaigns, gift guides and content marketing across the platforms where handmade buyers spend their time — at no extra cost to you. You make things. We find the people who want them.</p></div></div>
+            <div class="pb"><div class="pb-icon">✉️</div><div class="pb-text"><h4>Automated emails</h4><p>Order confirmations, shipping updates — all branded as your shop and sent automatically.</p></div></div>
+            <div class="pb"><div class="pb-icon">🔮</div><div class="pb-text"><h4>Wellness space included</h4><p>Reiki tools, crystals, hamsa items, meditation accessories — list in our dedicated wellness area and reach a whole new audience.</p></div></div>
+          </div>
+
+          <!-- How we market you -->
+          <div style="background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(232,180,184,0.07));border:1.5px solid rgba(201,168,76,0.2);border-radius:12px;padding:1.4rem 1.6rem;margin-bottom:1.6rem;">
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--charcoal);margin-bottom:0.5rem;">🎯 How we market your shop</h4>
+            <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;font-weight:300;">Your subscription includes our ongoing marketing — no extra budget needed from you. We actively promote the marketplace and your shop across multiple channels so the right buyers find you every single day.</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:0.6rem;">
+              <div style="background:#fff;border-radius:8px;padding:0.75rem 0.9rem;border:1px solid rgba(201,168,76,0.12);">
+                <div style="font-size:1rem;margin-bottom:0.2rem;">📱</div>
+                <div style="font-size:0.76rem;font-weight:600;color:var(--charcoal);margin-bottom:0.15rem;">Social media campaigns</div>
+                <div style="font-size:0.71rem;color:var(--muted);font-weight:300;line-height:1.45;">Organic and paid posts targeting people actively searching for handmade goods and unique gifts</div>
+              </div>
+              <div style="background:#fff;border-radius:8px;padding:0.75rem 0.9rem;border:1px solid rgba(201,168,76,0.12);">
+                <div style="font-size:1rem;margin-bottom:0.2rem;">🔍</div>
+                <div style="font-size:0.76rem;font-weight:600;color:var(--charcoal);margin-bottom:0.15rem;">Search advertising</div>
+                <div style="font-size:0.71rem;color:var(--muted);font-weight:300;line-height:1.45;">Paid search ads targeting buyers looking for unique handmade gifts — your products appear at the top</div>
+              </div>
+              <div style="background:#fff;border-radius:8px;padding:0.75rem 0.9rem;border:1px solid rgba(201,168,76,0.12);">
+                <div style="font-size:1rem;margin-bottom:0.2rem;">📌</div>
+                <div style="font-size:0.76rem;font-weight:600;color:var(--charcoal);margin-bottom:0.15rem;">Visual discovery</div>
+                <div style="font-size:0.71rem;color:var(--muted);font-weight:300;line-height:1.45;">Shoppable inspiration boards and image-led ads that reach gift-seekers browsing for ideas</div>
+              </div>
+              <div style="background:#fff;border-radius:8px;padding:0.75rem 0.9rem;border:1px solid rgba(201,168,76,0.12);">
+                <div style="font-size:1rem;margin-bottom:0.2rem;">🎁</div>
+                <div style="font-size:0.76rem;font-weight:600;color:var(--charcoal);margin-bottom:0.15rem;">Seasonal gift guides</div>
+                <div style="font-size:0.71rem;color:var(--muted);font-weight:300;line-height:1.45;">Christmas, Mother's Day, birthdays — curated guides published every season that drive buyers to your shop</div>
+              </div>
+              <div style="background:#fff;border-radius:8px;padding:0.75rem 0.9rem;border:1px solid rgba(201,168,76,0.12);">
+                <div style="font-size:1rem;margin-bottom:0.2rem;">🤝</div>
+                <div style="font-size:0.76rem;font-weight:600;color:var(--charcoal);margin-bottom:0.15rem;">Craft communities</div>
+                <div style="font-size:0.71rem;color:var(--muted);font-weight:300;line-height:1.45;">Active in UK maker groups, craft fair communities, and handmade networks — driving buyers and awareness</div>
+              </div>
+              <div style="background:#fff;border-radius:8px;padding:0.75rem 0.9rem;border:1px solid rgba(201,168,76,0.12);">
+                <div style="font-size:1rem;margin-bottom:0.2rem;">🔮</div>
+                <div style="font-size:0.76rem;font-weight:600;color:var(--charcoal);margin-bottom:0.15rem;">Wellness channels</div>
+                <div style="font-size:0.71rem;color:var(--muted);font-weight:300;line-height:1.45;">Crystal, reiki, and mindfulness communities where buyers seek handmade ritual and self-care items</div>
+              </div>
+            </div>
+          </div>
+
+          <a class="panel-cta" href="#notify">Register your interest &rarr;</a>
+          <a class="panel-cta-outline" href="#why">See how it works</a>
+        </div>
+      </div>
+
+      <!-- SHOPPER PANEL -->
+      <div class="panel" id="panel-shopper">
+        <div class="panel-inner">
+          <h2 class="panel-headline">Find something <em>truly one of a kind</em></h2>
+          <p class="panel-sub">ArtisansWeb is a curated boutique — every item is handmade by a real person in the UK. No mass-produced imitations. No factory goods dressed up as handmade. Genuine craft, made with love — including a dedicated wellness space for mind, body and soul.</p>
+          <div class="category-grid">
+            <span class="cat-pill">🕯️ Soy candles</span>
+            <span class="cat-pill">💍 Jewellery</span>
+            <span class="cat-pill">🎨 Original artwork</span>
+            <span class="cat-pill">🛁 Bath bombs</span>
+            <span class="cat-pill">🌿 Wax melts</span>
+            <span class="cat-pill">🧼 Handmade soaps</span>
+            <span class="cat-pill">🏺 Ceramics</span>
+            <span class="cat-pill">🪡 Macramé</span>
+            <span class="cat-pill">🌸 Pressed flower art</span>
+            <span class="cat-pill">🧶 Knitted gifts</span>
+            <span class="cat-pill">🪞 Home décor</span>
+            <span class="cat-pill">🔮 Crystals &amp; reiki</span>
+            <span class="cat-pill">🪬 Hamsa &amp; protection</span>
+            <span class="cat-pill">🧘 Meditation accessories</span>
+            <span class="cat-pill">✨ Wellness gifts</span>
+          </div>
+          <div class="panel-benefits">
+            <div class="pb"><div class="pb-icon">✨</div><div class="pb-text"><h4>Genuinely unique</h4><p>Every item is made by hand. No two are exactly alike. A gift that truly means something.</p></div></div>
+            <div class="pb"><div class="pb-icon">🇬🇧</div><div class="pb-text"><h4>UK makers only</h4><p>Know exactly who made what you&apos;re buying. Support real people doing what they love.</p></div></div>
+            <div class="pb"><div class="pb-icon">🔮</div><div class="pb-text"><h4>Dedicated wellness space</h4><p>Browse crystals, reiki tools, hamsa items, meditation scarves and more — all handmade, all intentional.</p></div></div>
+            <div class="pb"><div class="pb-icon">🔒</div><div class="pb-text"><h4>Safe &amp; secure</h4><p>Every shop is vetted. Stripe-secured checkout. Your purchase is protected every step.</p></div></div>
+          </div>
+          <a class="panel-cta" href="#notify">Notify me when we open &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="trust-bar">
+      <div class="trust-item"><span class="tdot"></span>Handmade only</div>
+      <div class="trust-item"><span class="tdot"></span>UK makers &amp; buyers</div>
+      <div class="trust-item"><span class="tdot"></span>Stripe secure payments</div>
+      <div class="trust-item"><span class="tdot"></span>No commission fees</div>
+      <div class="trust-item"><span class="tdot"></span>Wellness &amp; crystal space</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Find out more</span>
+    <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M3 8l4 4 4-4" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</section>
+
+<!-- ══ TICKER ══ -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="t-item feat">Handmade with love</div>
+    <div class="t-item"><span class="t-gem"></span>Soy candles</div>
+    <div class="t-item"><span class="t-gem"></span>Silver jewellery</div>
+    <div class="t-item"><span class="t-gem"></span>Wax melts</div>
+    <div class="t-item"><span class="t-gem"></span>Watercolour paintings</div>
+    <div class="t-item well"><span class="t-gem"></span>Crystals &amp; reiki</div>
+    <div class="t-item"><span class="t-gem"></span>Bath bombs</div>
+    <div class="t-item well"><span class="t-gem"></span>Hamsa protection items</div>
+    <div class="t-item"><span class="t-gem"></span>Resin art</div>
+    <div class="t-item well"><span class="t-gem"></span>Meditation accessories</div>
+    <div class="t-item"><span class="t-gem"></span>Ceramic mugs</div>
+    <div class="t-item"><span class="t-gem"></span>Handmade soaps</div>
+    <div class="t-item well"><span class="t-gem"></span>Chakra candles</div>
+    <div class="t-item"><span class="t-gem"></span>Macramé</div>
+    <div class="t-item well"><span class="t-gem"></span>Wellness gifts</div>
+    <div class="t-item"><span class="t-gem"></span>Home décor</div>
+    <div class="t-item feat">0% selling fees &middot; always</div>
+    <div class="t-item"><span class="t-gem"></span>Soy candles</div>
+    <div class="t-item"><span class="t-gem"></span>Silver jewellery</div>
+    <div class="t-item"><span class="t-gem"></span>Wax melts</div>
+    <div class="t-item"><span class="t-gem"></span>Watercolour paintings</div>
+    <div class="t-item well"><span class="t-gem"></span>Crystals &amp; reiki</div>
+    <div class="t-item"><span class="t-gem"></span>Bath bombs</div>
+    <div class="t-item well"><span class="t-gem"></span>Hamsa protection items</div>
+    <div class="t-item"><span class="t-gem"></span>Resin art</div>
+    <div class="t-item well"><span class="t-gem"></span>Meditation accessories</div>
+    <div class="t-item"><span class="t-gem"></span>Ceramic mugs</div>
+    <div class="t-item"><span class="t-gem"></span>Handmade soaps</div>
+    <div class="t-item well"><span class="t-gem"></span>Chakra candles</div>
+    <div class="t-item"><span class="t-gem"></span>Macramé</div>
+    <div class="t-item well"><span class="t-gem"></span>Wellness gifts</div>
+    <div class="t-item"><span class="t-gem"></span>Home décor</div>
+    <div class="t-item feat">Handmade with love</div>
+  </div>
+</div>
+
+<!-- ══ WELLNESS SECTION ══ -->
+<section class="wellness" id="wellness">
+  <div class="wellness-inner">
+
+    <div class="wellness-eye">
+      ✦ &nbsp;A dedicated space within ArtisansWeb
+    </div>
+
+    <h2 class="wellness-h2">
+      The Wellness Corner<br/>
+      <em>Handmade for mind, body &amp; soul</em>
+    </h2>
+
+    <div class="wellness-intro">
+      <p class="wellness-sub">
+        In a world that never slows down, the search for calm is more real than ever.
+        ArtisansWeb is home to a dedicated wellness space — a curated collection of handmade items
+        intentionally crafted to bring peace, protection, and mindfulness into everyday life.
+        Every piece is made by hand, chosen with purpose, and rooted in genuine wellbeing.
+        This isn&apos;t a trend. It&apos;s a necessity.
+      </p>
+      <div class="wellness-quote">
+        &ldquo;The things we surround ourselves with shape how we feel. Choose handmade. Choose intentional.&rdquo;
+        <cite>— ArtisansWeb Wellness Corner</cite>
+      </div>
+    </div>
+
+    <!-- Hamsa spotlight — with nod to Crafty Mouse -->
+    <div class="hamsa-spotlight">
+      <div class="hamsa-icon">🪬</div>
+      <div class="hamsa-text">
+        <h3>Featured: Eco-Friendly Hamsa Tealight Holders</h3>
+        <p>
+          The Hamsa hand is one of the world&apos;s most recognised symbols of protection, good fortune,
+          and the warding off of negative energy. Our wellness makers craft these beautiful items by hand —
+          like these stunning eco-friendly resin hamsa tealight holders — transforming an ancient symbol
+          of calm and protection into a daily reminder to breathe, slow down, and find your centre.
+          Light a candle. Exhale. You&apos;re home.
+        </p>
+        <div class="hamsa-tags">
+          <span class="h-tag">Handmade resin</span>
+          <span class="h-tag">Eco-friendly</span>
+          <span class="h-tag">Protection symbol</span><span class="h-tag">Anxiety relief</span>
+          <span class="h-tag">Home altar</span>
+          <span class="h-tag">Mindful gifting</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wellness-grid">
+      <div class="w-card">
+        <span class="w-card-icon">🔮</span>
+        <h3>Crystals &amp; Gemstones</h3>
+        <p>Handpicked, cleansed, and often hand-wrapped or set by UK makers. Amethyst for calm, rose quartz for love, black tourmaline for protection — each piece chosen with intention.</p>
+        <span class="w-tag">Crystal healing</span>
+      </div>
+      <div class="w-card">
+        <span class="w-card-icon">🌿</span>
+        <h3>Reiki &amp; Energy Tools</h3>
+        <p>Handmade smudge bundles, energy wands, crystal grids, and Reiki-charged items crafted by trained practitioners. Tools to help clear, balance and restore your energy.</p>
+        <span class="w-tag">Reiki &amp; energy work</span>
+      </div>
+      <div class="w-card">
+        <span class="w-card-icon">🧘</span>
+        <h3>Meditation Accessories</h3>
+        <p>Handwoven meditation scarves, mala bead necklaces, cushion covers, and altar cloths — made to support stillness and help create your own sacred space at home.</p>
+        <span class="w-tag">Mindfulness</span>
+      </div>
+      <div class="w-card">
+        <span class="w-card-icon">🕯️</span>
+        <h3>Chakra &amp; Intention Candles</h3>
+        <p>Hand-poured soy candles infused with crystals, essential oils, and dried botanicals. Each one set with a specific intention — from grounding to clarity to self-love.</p>
+        <span class="w-tag">Chakra alignment</span>
+      </div>
+      <div class="w-card">
+        <span class="w-card-icon">🪬</span>
+        <h3>Hamsa &amp; Protection Symbols</h3>
+        <p>Handmade hamsa wall hangings, tealight holders, jewellery, and décor pieces — bringing the ancient symbol of protection and good fortune into your everyday space.</p>
+        <span class="w-tag">Protection &amp; luck</span>
+      </div>
+      <div class="w-card">
+        <span class="w-card-icon">🌙</span>
+        <h3>Moon &amp; Ritual Items</h3>
+        <p>Moon phase prints, lunar journals, ritual kits, and selenite charging plates — handmade items for those who find peace in cycles, seasons, and slowing down.</p>
+        <span class="w-tag">Moon rituals</span>
+      </div>
+    </div>
+
+    <div class="wellness-cta-row">
+      <a class="btn-lavender" href="#notify">List your wellness products &rarr;</a>
+      <a class="btn-lavender-outline" href="#notify">Notify me when the wellness corner opens</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ WHY FOR MAKERS ══ -->
+<section class="why" id="why">
+  <div class="why-inner">
+    <span class="sec-eye">For makers</span>
+    <h2 class="why-h2">Stop giving away your<br/><em>hard-earned profit</em></h2>
+    <p class="why-sub">Etsy charges 6.5% per sale plus listing fees plus payment processing. On £500 of sales you hand over £40+ before paying for a single ingredient. We charge nothing per sale. Ever.</p>
+    <div class="ad-reach">
+      <h3>🎯 Maximum exposure to buyers actively sourcing handmade goods</h3>
+      <p>We invest our marketing budget directly where buyers who seek out quality, unique handmade products — and wellness items — spend their time. Your shop gets discovered by the right people, every single day.</p>
+      <div class="ad-tags">
+        <span class="ad-tag">Pinterest boards</span><span class="ad-tag">Instagram Reels</span>
+        <span class="ad-tag">Facebook craft groups</span><span class="ad-tag">TikTok #handmade</span>
+        <span class="ad-tag">Wellness communities</span><span class="ad-tag">Crystal &amp; reiki groups</span>
+        <span class="ad-tag">UK gift guides</span><span class="ad-tag">Google Shopping</span>
+        <span class="ad-tag">Maker communities</span><span class="ad-tag">Seasonal gift campaigns</span>
+        <span class="ad-tag">Wedding &amp; events buyers</span><span class="ad-tag">Mindfulness audiences</span>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-block"><div class="sn">0%</div><div class="sl">Commission on every sale.<br/>You keep what you earn.</div></div>
+      <div class="stat-block"><div class="sn">£10</div><div class="sl">Flat monthly fee.<br/>Everything included.</div></div>
+      <div class="stat-block"><div class="sn">100%</div><div class="sl">Handmade only.<br/>No mass-produced clutter.</div></div>
+      <div class="stat-block"><div class="sn">UK</div><div class="sl">Built for UK makers.<br/>Buyers who value craft.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMPARE ══ -->
+<section class="compare">
+  <div class="compare-inner">
+    <span class="sec-eye" style="color:var(--gold-dark);">The numbers don&apos;t lie</span>
+    <h2 class="cmp-h2">What you keep from<br/><em>£500 of handmade sales</em></h2>
+    <p class="cmp-sub">Etsy charges 6.5% transaction fee + £0.20 per listing + payment processing. That&apos;s your materials money walking out the door every month.</p>
+    <table class="compare-table">
+      <thead><tr><th>Platform</th><th>ArtisansWeb ✦</th><th>Etsy</th><th>Shopify Starter</th></tr></thead>
+      <tbody>
+        <tr><td>Monthly fee</td><td class="aw-col">From £10</td><td>£0 (but&hellip;)</td><td>£29+/mo</td></tr>
+        <tr><td>Commission per sale</td><td class="aw-col"><span class="check">✦ 0%</span></td><td><span class="cross">✕ 6.5%</span></td><td><span class="cross">✕ 0&ndash;2%</span></td></tr>
+        <tr><td>Kept from £500 of sales</td><td class="aw-col"><span class="check">~£490</span></td><td><span class="cross">~£450</span></td><td><span class="cross">~£461</span></td></tr>
+        <tr><td>Handmade products only</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="cross">✕ No</span></td><td><span class="cross">✕ No</span></td></tr>
+        <tr><td>Dedicated wellness space</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="cross">✕ No</span></td><td><span class="cross">✕ No</span></td></tr>
+        <tr><td>Your own branded shop</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="cross">✕ Etsy-branded</span></td><td><span class="check">✦ Yes</span></td></tr>
+        <tr><td>Marketplace audience included</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="check">✦ Yes</span></td><td><span class="cross">✕ No</span></td></tr>
+        <tr><td>Targeted handmade advertising</td><td class="aw-col"><span class="check">✦ Included</span></td><td><span class="cross">✕ You pay extra</span></td><td><span class="cross">✕ No</span></td></tr>
+        <tr><td>Legal docs included</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="cross">✕ No</span></td><td><span class="cross">✕ No</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="how">
+  <span class="sec-eye" style="color:var(--gold-dark);">Getting started</span>
+  <h2 class="how-h2">Open your shop in an afternoon</h2>
+  <p class="how-sub">No developers. No tech headaches. Any maker can be live the same day.</p>
+  <div class="steps">
+    <div class="step"><div class="step-n">1</div><h3>Sign up &amp; brand your shop</h3><p>Add your logo, colours, and maker story. Takes less than 20 minutes.</p></div>
+    <div class="step"><div class="step-n">2</div><h3>Add your products</h3><p>Upload photos, set prices and stock. As easy as posting on Instagram.</p></div>
+    <div class="step"><div class="step-n">3</div><h3>Connect Stripe</h3><p>Payments go straight to you. We never hold your money.</p></div>
+    <div class="step"><div class="step-n">4</div><h3>Start selling</h3><p>Your shop goes live in the main marketplace and the Wellness Corner. We drive the buyers.</p></div>
+  </div>
+</section>
+
+<!-- ══ EMAIL ══ -->
+<section class="email-sec" id="notify">
+  <div class="email-inner">
+    <img class="email-logo" src="logo.png" alt="ArtisansWeb"/>
+    <h2 class="email-h2">Be first through <em>our doors</em></h2>
+    <p class="email-p">We&apos;re finishing the final touches on our shelves — handmade goods, wellness items, and everything in between.<br/>Leave your email and you&apos;ll be the first to know when we open.</p>
+    <div class="email-row" id="email-form">
+      <input class="email-input" type="email" id="email-field" placeholder="your@email.com" autocomplete="email" aria-label="Email address"/>
+      <button class="panel-cta" onclick="handleNotify()" style="white-space:nowrap;">Notify me</button>
+    </div>
+    <div class="email-success" id="email-success" role="status">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#A07830" stroke-width="1.5"/><path d="M6 9l2.5 2.5 4-4" stroke="#A07830" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      You&apos;re on the list — we&apos;ll see you when we open!
+    </div>
+    <p class="email-note" id="email-note">No spam. Unsubscribe any time.</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <a class="fl" href="#">
+    <img class="footer-logo" src="logo.png" alt="ArtisansWeb logo"/>
+    <span class="fn">Artisans<span>Web</span></span>
+  </a>
+  <div class="fr">
+    <a href="mailto:hello@artisansweb.co.uk">hello@artisansweb.co.uk</a>
+    <a href="https://artisansweb.co.uk">artisansweb.co.uk</a>
+    <span>&copy; 2026 ArtisansWeb &middot; All rights reserved</span>
+  </div>
+</footer>
+
+<script>
+function showPanel(type) {
+  document.getElementById('pill-maker').classList.toggle('active', type === 'maker');
+  document.getElementById('pill-shopper').classList.toggle('active', type === 'shopper');
+  document.getElementById('panel-maker').classList.toggle('active', type === 'maker');
+  document.getElementById('panel-shopper').classList.toggle('active', type === 'shopper');
+}
+function handleNotify() {
+  const email = document.getElementById('email-field').value.trim();
+  const input = document.getElementById('email-field');
+  if (!email || !email.includes('@')) { input.style.borderColor = 'var(--blush-deep)'; input.focus(); return; }
+  input.style.borderColor = '';
+  document.getElementById('email-form').style.display = 'none';
+  document.getElementById('email-note').style.display = 'none';
+  document.getElementById('email-success').classList.add('show');
+  // TODO: POST { email } to Supabase edge function → Brevo
+}
+document.getElementById('email-field').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') handleNotify();
+  this.style.borderColor = '';
+});
+</script>
+</body>
+</html>
