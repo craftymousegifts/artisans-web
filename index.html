@@ -1,4 +1,4 @@
-<!DOCTYPE html><!-- v1.0 -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -177,7 +177,8 @@ body{background:var(--cream);color:var(--charcoal);font-family:'DM Sans',sans-se
 /* Product category cards */
 .wellness-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1.2rem;
   margin-bottom:3rem;
 }
 
@@ -329,6 +330,101 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
   .wellness-grid{grid-template-columns:1fr;}
   .wellness-cta-row{flex-direction:column;}
 }
+
+/* ══ FOUNDER SECTION ══ */
+.founder{
+  padding:6rem clamp(1.5rem,8vw,5rem);
+  background:#fff;
+  position:relative;overflow:hidden;
+}
+.founder::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--blush),var(--gold),var(--blush));
+}
+.founder-inner{max-width:900px;margin:0 auto;}
+
+.founder-eye{
+  font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold-dark);margin-bottom:1rem;display:block;
+}
+.founder-h2{
+  font-family:'Cormorant Garamond',serif;font-weight:700;
+  font-size:clamp(1.9rem,4.5vw,3rem);
+  color:var(--charcoal);line-height:1.1;margin-bottom:2rem;
+}
+.founder-h2 em{font-style:italic;color:var(--gold-dark);}
+
+.founder-body{
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;
+  margin-bottom:2.5rem;
+}
+@media(max-width:700px){.founder-body{grid-template-columns:1fr;gap:2rem;}}
+
+.founder-text p{
+  font-size:clamp(0.9rem,1.5vw,1rem);color:var(--muted);line-height:1.85;
+  font-weight:300;margin-bottom:1.2rem;
+}
+.founder-text p strong{color:var(--charcoal);font-weight:600;}
+.founder-text p em{font-style:italic;color:var(--gold-dark);}
+
+.founder-card{
+  background:linear-gradient(160deg,var(--blush-pale),#FAF2E8);
+  border:1.5px solid rgba(201,168,76,0.2);
+  border-radius:16px;padding:2rem;
+  position:sticky;top:2rem;
+}
+.founder-card-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;font-weight:700;
+  color:var(--charcoal);margin-bottom:0.2rem;
+}
+.founder-card-title{
+  font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--gold-dark);margin-bottom:1.2rem;
+}
+.founder-stats{display:flex;flex-direction:column;gap:0.8rem;margin-bottom:1.4rem;}
+.founder-stat{
+  display:flex;align-items:center;gap:0.75rem;
+  padding:0.7rem 0.9rem;background:#fff;
+  border-radius:8px;border:1px solid rgba(201,168,76,0.15);
+}
+.founder-stat-icon{font-size:1.2rem;flex-shrink:0;}
+.founder-stat-text{font-size:0.78rem;color:var(--charcoal);line-height:1.4;}
+.founder-stat-text strong{font-weight:700;display:block;font-size:0.82rem;}
+
+.founder-quote{
+  border-left:3px solid var(--gold);
+  padding:1rem 1.2rem;margin-top:1.2rem;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:1.1rem;
+  color:var(--charcoal);line-height:1.6;
+}
+
+.market-pain{
+  background:var(--charcoal);
+  border-radius:14px;padding:2rem;
+  margin-top:2rem;
+}
+.market-pain h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;font-weight:700;
+  color:var(--gold-light);margin-bottom:0.8rem;
+}
+.market-pain-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:0.8rem;margin-bottom:1.4rem;
+}
+.mp{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(201,168,76,0.15);
+  border-radius:8px;padding:0.9rem 1rem;
+}
+.mp-icon{font-size:1.1rem;margin-bottom:0.3rem;}
+.mp h4{font-size:0.82rem;font-weight:600;color:var(--gold-light);margin-bottom:0.2rem;}
+.mp p{font-size:0.74rem;color:rgba(250,246,241,0.5);line-height:1.5;font-weight:300;}
+
+.founder-cta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;}
 </style>
 </head>
 <body>
@@ -376,7 +472,8 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
   <div class="hero-content">
     <img class="logo-img" src="logo.png" alt="ArtisansWeb — Handmade Boutique"/>
 
-    <div class="store-banner"><span class="blink"></span>
+    <div class="store-banner">
+      <span class="blink"></span>
       Our doors open soon — we&apos;re stocking the shelves
     </div>
 
@@ -595,7 +692,8 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
         <div class="hamsa-tags">
           <span class="h-tag">Handmade resin</span>
           <span class="h-tag">Eco-friendly</span>
-          <span class="h-tag">Protection symbol</span><span class="h-tag">Anxiety relief</span>
+          <span class="h-tag">Protection symbol</span>
+          <span class="h-tag">Anxiety relief</span>
           <span class="h-tag">Home altar</span>
           <span class="h-tag">Mindful gifting</span>
         </div>
@@ -646,6 +744,109 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
       <a class="btn-lavender-outline" href="#notify">Notify me when the wellness corner opens</a>
     </div>
 
+  </div>
+</section>
+
+
+<!-- ══ FOUNDER SECTION ══ -->
+<section class="founder" id="founder">
+  <div class="founder-inner">
+
+    <span class="founder-eye">From the founder</span>
+    <h2 class="founder-h2">
+      Built by a maker who <em>gets it</em> —<br/>
+      because I've lived every bit of it
+    </h2>
+
+    <div class="founder-body">
+
+      <div class="founder-text">
+        <p>
+          I spend my spare time doing what I love — <strong>making beautiful, handcrafted items</strong>.
+          Perfecting designs. Coming up with new ideas. Trying to stand out, be unique, be above the rest.
+          But somewhere between the candle pours and the resin moulds, I also had to figure out
+          social media, write posts, design adverts, set up market stalls, raise a family,
+          hold down a full-time job, and somehow carve out a future in a world being reshaped by AI —
+          <em>a world that's uncertain for all of us, and for our children too.</em>
+        </p>
+        <p>
+          I've stood at market stalls in village halls watching people walk straight past.
+          I've smiled at browsers who wouldn't make eye contact. I've packed up my carefully
+          crafted products — products I spent hours making — and driven home having barely
+          covered the stall fee. I've relied on organisers who didn't market the event.
+          I've set up on days when families chose days out instead, and watched my target audience
+          dwindle away along with my energy, my confidence, and my belief.
+          <strong>Doubt crept in. It always does.</strong>
+        </p>
+        <p>
+          The craft market model is broken for makers. You're limited to one town,
+          one hall, one Saturday. You're paying fees to stand in a room hoping the right person
+          walks in. You're doing everything — the making, the marketing, the selling, the smiling —
+          all on your own. It's exhausting. And it doesn't have to be this way.
+        </p>
+        <p>
+          <strong>So I decided to fix it.</strong> The same way I fixed my own CLP compliance
+          struggles with CLPeasy. The same way I built Crafty Mouse Gifts to sell my own handmade
+          products properly online. I come from <strong>25+ years in enterprise IT</strong> —
+          I've supported Formula 1 teams, worked at global tech companies, and spent decades
+          solving complex problems with technology. Now I'm using every bit of that experience
+          to build something for <em>us</em>.
+        </p>
+        <p>
+          ArtisansWeb is your tribe. A space where makers and buyers who know exactly what they want
+          find each other — not in a draughty village hall, but in a beautiful boutique marketplace
+          open 24 hours a day, 365 days a year, reaching every corner of the UK.
+          <em>No more hoping. No more doubt. Just you, your craft, and the people who will love it.</em>
+        </p>
+
+        <!-- The market stall pain points -->
+        <div class="market-pain">
+          <h3>Sound familiar? We can stop this — and stop it now.</h3>
+          <div class="market-pain-grid">
+            <div class="mp"><div class="mp-icon">😔</div><h4>People just walk past</h4><p>Hours of prep, a full stall, and buyers who won't stop or engage — on either side.</p></div>
+            <div class="mp"><div class="mp-icon">📍</div><h4>Limited to one location</h4><p>One town. One hall. One day. Your market is as small as your postcode.</p></div>
+            <div class="mp"><div class="mp-icon">💸</div><h4>Fees with no guarantees</h4><p>Stall fees paid regardless of sales. Organisers who don't market the event fully.</p></div>
+            <div class="mp"><div class="mp-icon">📅</div><h4>Competing with everything</h4><p>Bank holidays, school events, bad weather, family days out — your audience disappears.</p></div>
+            <div class="mp"><div class="mp-icon">⏰</div><h4>Hours of unpaid setup</h4><p>Loading the car, setting up, breaking down — before you've sold a single thing.</p></div>
+            <div class="mp"><div class="mp-icon">💭</div><h4>Doubt creeps in</h4><p>Energy drains. Confidence wavers. You wonder if it's worth it. It is. You just need the right platform.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Founder card -->
+      <div class="founder-card">
+        <div class="founder-card-name">Michaela Feeley</div>
+        <div class="founder-card-title">Founder · ArtisansWeb</div>
+
+        <div class="founder-stats">
+          <div class="founder-stat">
+            <div class="founder-stat-icon">💻</div>
+            <div class="founder-stat-text"><strong>25+ years in enterprise IT</strong>Including Formula 1 support &amp; global tech companies</div>
+          </div>
+          <div class="founder-stat">
+            <div class="founder-stat-icon">🕯️</div>
+            <div class="founder-stat-text"><strong>Handmade maker</strong>Candles, wax melts, resin &amp; hamsa gifts at Crafty Mouse Gifts</div>
+          </div>
+          <div class="founder-stat">
+            <div class="founder-stat-icon">⚗️</div>
+            <div class="founder-stat-text"><strong>Founder of CLPeasy</strong>CLP label compliance tool built for UK makers</div>
+          </div>
+          <div class="founder-stat">
+            <div class="founder-stat-icon">🛍️</div>
+            <div class="founder-stat-text"><strong>Been there, done it</strong>Market stalls, online shops, late nights, self-doubt &amp; all</div>
+          </div>
+        </div>
+
+        <div class="founder-quote">
+          &ldquo;I build things that fix problems I&apos;ve lived through myself. ArtisansWeb is the platform I always needed but couldn&apos;t find. So I built it.&rdquo;
+        </div>
+
+        <div class="founder-cta-row">
+          <a class="panel-cta" href="#notify">Join the waitlist &rarr;</a>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
