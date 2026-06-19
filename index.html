@@ -1,4 +1,4 @@
-<!DOCTYPE html><!-- AW-FINAL-v3 -->  
+<!DOCTYPE html><!-- AW-FINAL-v3 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -357,10 +357,15 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
 .founder-h2 em{font-style:italic;color:var(--gold-dark);}
 
 .founder-body{
-  display:grid;grid-template-columns:3fr 2fr;gap:2rem;align-items:start;
+  display:flex;flex-direction:column;gap:2rem;align-items:stretch;
   margin-bottom:2.5rem;
 }
-@media(max-width:900px){.founder-body{grid-template-columns:1fr;gap:2rem;}}
+.founder-card{
+  background:linear-gradient(160deg,var(--blush-pale),#FAF2E8);
+  border:1.5px solid rgba(201,168,76,0.2);
+  border-radius:16px;padding:2rem;
+  max-width:600px;
+}
 
 .founder-text p{
   font-size:clamp(0.9rem,1.5vw,1rem);color:var(--muted);line-height:1.85;
