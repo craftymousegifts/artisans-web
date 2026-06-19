@@ -1,5 +1,5 @@
-<!DOCTYPE html> 
-<html lang="en">  
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -432,6 +432,7 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
   background:rgba(250,246,241,0.97);
   backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(201,168,76,0.2);
+  overflow:visible;
 }
 /* Row 1 — logo centred with craft icons either side */
 .nav-top{
@@ -439,6 +440,7 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
   position:relative;
   padding:0.5rem 1.5rem 0.2rem;
   border-bottom:1px solid rgba(201,168,76,0.08);
+  overflow:visible;
 }
 .nav-logo-centre{
   display:flex;align-items:center;justify-content:center;
@@ -474,18 +476,18 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
 }
 .craft-icon-group:hover svg.icon-svg{transform:scale(1.55);}
 .craft-tooltip{
-  position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);
+  position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);
   background:var(--charcoal);color:var(--gold-light);
-  font-family:'DM Sans',sans-serif;font-size:0.62rem;font-weight:600;
+  font-family:'DM Sans',sans-serif;font-size:0.6rem;font-weight:600;
   letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;
-  padding:0.3em 0.65em;border-radius:4px;
+  padding:0.25em 0.6em;border-radius:4px;
   opacity:0;pointer-events:none;
   transition:opacity 0.18s;
   z-index:1000;
 }
 .craft-tooltip::after{
-  content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
-  border:4px solid transparent;border-top-color:var(--charcoal);
+  content:'';position:absolute;bottom:100%;left:50%;transform:translateX(-50%);
+  border:4px solid transparent;border-bottom-color:var(--charcoal);
 }
 .craft-icon-group:hover .craft-tooltip{opacity:1;}
 
@@ -808,7 +810,7 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
   <div class="hero-dots"></div>
   <div class="hero-glow"></div>
 
-  <div class="hero-content">
+    <div class="hero-content">
     <img class="logo-img" src="logo.png" alt="ArtisansWeb — Handmade Boutique"/>
 
     <div class="store-banner">
@@ -829,7 +831,7 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
     <div class="audience-selector">
       <p class="audience-label">Tell us who you are and we&apos;ll show you what&apos;s in store for you</p>
       <div class="pill-row">
-        <button class="pill-btn active" onclick="showPanel('maker')" id="pill-maker">
+        <button class="pill-btn" onclick="showPanel('maker')" id="pill-maker">
           <span class="pill-icon">🧵</span> I&apos;m a Maker
         </button>
         <button class="pill-btn" onclick="showPanel('shopper')" id="pill-shopper">
@@ -838,122 +840,116 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
       </div>
     </div>
 
+    <!-- Panels — hidden by default, revealed on pill click -->
     <div class="benefit-panels">
 
-      <!-- MAKER PANEL -->
-      <div class="panel active" id="panel-maker">
+      <!-- ══ MAKER PANEL ══ -->
+      <div class="panel" id="panel-maker">
         <div class="panel-inner">
           <h2 class="panel-headline">Your craft deserves its own <em>proper shop</em></h2>
           <p class="panel-sub">Open your branded shop inside the UK&apos;s only marketplace built exclusively for handmade sellers — and keep every single penny you earn.</p>
+
           <div class="fee-highlight">
             <div class="fee-num">0%</div>
             <div class="fee-text"><strong>Zero commission. Zero selling fees.</strong><br/>One flat subscription from £10/month. No surprises, no percentage stolen from every sale.</div>
           </div>
+
           <div class="panel-benefits">
             <div class="pb"><div class="pb-icon">🏪</div><div class="pb-text"><h4>Your branded shop</h4><p>Your logo, colours, and story. Not a generic listing. Looks like you paid thousands for it.</p></div></div>
             <div class="pb"><div class="pb-icon">💳</div><div class="pb-text"><h4>Payments handled</h4><p>Stripe checkout built in. Orders land in your dashboard, money goes straight to your account.</p></div></div>
             <div class="pb"><div class="pb-icon">📋</div><div class="pb-text"><h4>Legally sorted</h4><p>Bespoke privacy policy, T&Cs and returns policy generated with your business name. Included.</p></div></div>
-            <div class="pb"><div class="pb-icon">🎯</div><div class="pb-text"><h4>We market your shop for you</h4><p>We run targeted ads, social campaigns, gift guides and content marketing across the platforms where handmade buyers spend their time — at no extra cost to you. You make things. We find the people who want them.</p></div></div>
+            <div class="pb"><div class="pb-icon">📱</div><div class="pb-text"><h4>We market your shop for you</h4><p>Targeted social campaigns, search ads, visual discovery, seasonal gift guides, craft communities and wellness channels — all included, no extra budget needed.</p></div></div>
             <div class="pb"><div class="pb-icon">✉️</div><div class="pb-text"><h4>Automated emails</h4><p>Order confirmations, shipping updates — all branded as your shop and sent automatically.</p></div></div>
-            <div class="pb"><div class="pb-icon">🔮</div><div class="pb-text"><h4>Wellness space included</h4><p>Reiki tools, crystals, hamsa items, meditation accessories — list in our dedicated wellness area and reach a whole new audience.</p></div></div>
+            <div class="pb"><div class="pb-icon">📦</div><div class="pb-text"><h4>Simple product management</h4><p>Add products, manage stock, set variations and photos. Built for makers, not warehouse managers.</p></div></div>
           </div>
 
-          <!-- How we market you -->
-          <div style="background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(232,180,184,0.07));border:1.5px solid rgba(201,168,76,0.2);border-radius:12px;padding:1.4rem 1.6rem;margin-bottom:1.6rem;">
-            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--charcoal);margin-bottom:0.5rem;">🎯 How we market your shop</h4>
-            <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;font-weight:300;">Your subscription includes our ongoing marketing — no extra budget needed from you. We actively promote the marketplace and your shop across multiple channels so the right buyers find you every single day.</p>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:0.6rem;">
-              <div style="background:#fff;border-radius:8px;padding:0.75rem 0.9rem;border:1px solid rgba(201,168,76,0.12);">
-                <div style="font-size:1rem;margin-bottom:0.2rem;">📱</div>
-                <div style="font-size:0.76rem;font-weight:600;color:var(--charcoal);margin-bottom:0.15rem;">Social media campaigns</div>
-                <div style="font-size:0.71rem;color:var(--muted);font-weight:300;line-height:1.45;">Organic and paid posts targeting people actively searching for handmade goods and unique gifts</div>
+          <!-- Wellness Corner — maker context -->
+          <div style="margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid rgba(201,168,76,0.15);">
+            <div style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--lavender);margin-bottom:0.8rem;">✦ &nbsp;The Wellness Corner</div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--charcoal);margin-bottom:0.6rem;">A space for spiritual wellbeing — handmade or not</h3>
+            <p style="font-size:0.9rem;color:var(--muted);font-weight:300;line-height:1.75;max-width:640px;">ArtisansWeb is also home to a dedicated Wellness Corner where sellers can showcase spiritual wellbeing items — crystals, reiki tools, meditation accessories, chakra candles, hamsa pieces and more. Whether handmade or curated with intention, these products exist for one reason: to help people eliminate stress, find calm, and take care of their wellbeing every single day. Because that matters.</p>
+          </div>
+
+          <!-- How it works -->
+          <div style="margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid rgba(201,168,76,0.15);">
+            <span style="font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:0.8rem;display:block;">Getting started</span>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--charcoal);margin-bottom:1.4rem;">Open your shop in an afternoon</h3>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:rgba(201,168,76,0.15);border-radius:12px;overflow:hidden;margin-bottom:1.6rem;">
+              <div style="background:var(--cream);padding:1.6rem 1.3rem;">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:rgba(201,168,76,0.14);line-height:1;margin-bottom:0.4rem;">1</div>
+                <h4 style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--charcoal);margin-bottom:0.35rem;">Sign up &amp; brand your shop</h4>
+                <p style="font-size:0.76rem;color:var(--muted);line-height:1.6;font-weight:300;">Add your logo, colours, and maker story. Takes less than 20 minutes.</p>
               </div>
-              <div style="background:#fff;border-radius:8px;padding:0.75rem 0.9rem;border:1px solid rgba(201,168,76,0.12);">
-                <div style="font-size:1rem;margin-bottom:0.2rem;">🔍</div>
-                <div style="font-size:0.76rem;font-weight:600;color:var(--charcoal);margin-bottom:0.15rem;">Search advertising</div>
-                <div style="font-size:0.71rem;color:var(--muted);font-weight:300;line-height:1.45;">Paid search ads targeting buyers looking for unique handmade gifts — your products appear at the top</div>
+              <div style="background:var(--cream);padding:1.6rem 1.3rem;">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:rgba(201,168,76,0.14);line-height:1;margin-bottom:0.4rem;">2</div>
+                <h4 style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--charcoal);margin-bottom:0.35rem;">Add your products</h4>
+                <p style="font-size:0.76rem;color:var(--muted);line-height:1.6;font-weight:300;">Upload photos, set prices and stock. As easy as posting on Instagram.</p>
               </div>
-              <div style="background:#fff;border-radius:8px;padding:0.75rem 0.9rem;border:1px solid rgba(201,168,76,0.12);">
-                <div style="font-size:1rem;margin-bottom:0.2rem;">📌</div>
-                <div style="font-size:0.76rem;font-weight:600;color:var(--charcoal);margin-bottom:0.15rem;">Visual discovery</div>
-                <div style="font-size:0.71rem;color:var(--muted);font-weight:300;line-height:1.45;">Shoppable inspiration boards and image-led ads that reach gift-seekers browsing for ideas</div>
+              <div style="background:var(--cream);padding:1.6rem 1.3rem;">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:rgba(201,168,76,0.14);line-height:1;margin-bottom:0.4rem;">3</div>
+                <h4 style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--charcoal);margin-bottom:0.35rem;">Connect Stripe</h4>
+                <p style="font-size:0.76rem;color:var(--muted);line-height:1.6;font-weight:300;">Payments go straight to you. We never hold your money.</p>
               </div>
-              <div style="background:#fff;border-radius:8px;padding:0.75rem 0.9rem;border:1px solid rgba(201,168,76,0.12);">
-                <div style="font-size:1rem;margin-bottom:0.2rem;">🎁</div>
-                <div style="font-size:0.76rem;font-weight:600;color:var(--charcoal);margin-bottom:0.15rem;">Seasonal gift guides</div>
-                <div style="font-size:0.71rem;color:var(--muted);font-weight:300;line-height:1.45;">Christmas, Mother's Day, birthdays — curated guides published every season that drive buyers to your shop</div>
-              </div>
-              <div style="background:#fff;border-radius:8px;padding:0.75rem 0.9rem;border:1px solid rgba(201,168,76,0.12);">
-                <div style="font-size:1rem;margin-bottom:0.2rem;">🤝</div>
-                <div style="font-size:0.76rem;font-weight:600;color:var(--charcoal);margin-bottom:0.15rem;">Craft communities</div>
-                <div style="font-size:0.71rem;color:var(--muted);font-weight:300;line-height:1.45;">Active in UK maker groups, craft fair communities, and handmade networks — driving buyers and awareness</div>
-              </div>
-              <div style="background:#fff;border-radius:8px;padding:0.75rem 0.9rem;border:1px solid rgba(201,168,76,0.12);">
-                <div style="font-size:1rem;margin-bottom:0.2rem;">🔮</div>
-                <div style="font-size:0.76rem;font-weight:600;color:var(--charcoal);margin-bottom:0.15rem;">Wellness channels</div>
-                <div style="font-size:0.71rem;color:var(--muted);font-weight:300;line-height:1.45;">Crystal, reiki, and mindfulness communities where buyers seek handmade ritual and self-care items</div>
+              <div style="background:var(--cream);padding:1.6rem 1.3rem;">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:rgba(201,168,76,0.14);line-height:1;margin-bottom:0.4rem;">4</div>
+                <h4 style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--charcoal);margin-bottom:0.35rem;">Start selling</h4>
+                <p style="font-size:0.76rem;color:var(--muted);line-height:1.6;font-weight:300;">Your shop goes live. We drive the buyers — you make things and get paid.</p>
               </div>
             </div>
           </div>
 
-          <a class="panel-cta" href="#notify">Register your interest &rarr;</a>
-          <a class="panel-cta-outline" href="#why">See how it works</a>
+          <!-- Compare table -->
+          <div style="margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid rgba(201,168,76,0.15);">
+            <span style="font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:0.6rem;display:block;">The numbers don&apos;t lie</span>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--charcoal);margin-bottom:0.4rem;">What you keep from £500 of handmade sales</h3>
+            <p style="font-size:0.82rem;color:var(--muted);font-weight:300;margin-bottom:1.2rem;line-height:1.6;">Etsy charges 6.5% transaction fee + £0.20 per listing + payment processing. That&apos;s your materials money walking out the door every month.</p>
+            <div style="overflow-x:auto;">
+            <table class="compare-table" style="margin-bottom:0;">
+              <thead><tr><th>Platform</th><th>ArtisansWeb ✦</th><th>Etsy</th><th>Shopify Starter</th></tr></thead>
+              <tbody>
+                <tr><td>Monthly fee</td><td class="aw-col">From £10</td><td>£0 (but&hellip;)</td><td>£29+/mo</td></tr>
+                <tr><td>Commission per sale</td><td class="aw-col"><span class="check">✦ 0%</span></td><td><span class="cross">✕ 6.5%</span></td><td><span class="cross">✕ 0&ndash;2%</span></td></tr>
+                <tr><td>Kept from £500 sales</td><td class="aw-col"><span class="check">~£490</span></td><td><span class="cross">~£450</span></td><td><span class="cross">~£461</span></td></tr>
+                <tr><td>Handmade only</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="cross">✕ No</span></td><td><span class="cross">✕ No</span></td></tr>
+                <tr><td>Dedicated wellness space</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="cross">✕ No</span></td><td><span class="cross">✕ No</span></td></tr>
+                <tr><td>Your own branded shop</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="cross">✕ Etsy-branded</span></td><td><span class="check">✦ Yes</span></td></tr>
+                <tr><td>Marketplace audience</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="check">✦ Yes</span></td><td><span class="cross">✕ No</span></td></tr>
+                <tr><td>Targeted advertising</td><td class="aw-col"><span class="check">✦ Included</span></td><td><span class="cross">✕ You pay extra</span></td><td><span class="cross">✕ No</span></td></tr>
+                <tr><td>Legal docs included</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="cross">✕ No</span></td><td><span class="cross">✕ No</span></td></tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+
+          <!-- Email notify inline -->
+          <div style="background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(232,180,184,0.07));border:1.5px solid rgba(201,168,76,0.22);border-radius:12px;padding:1.6rem 2rem;margin-top:2rem;text-align:center;">
+            <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--charcoal);margin-bottom:0.4rem;">Be first through our doors</p>
+            <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.2rem;font-weight:300;">Leave your email and we&apos;ll notify you the moment we open.</p>
+            <div style="display:flex;gap:0.6rem;max-width:400px;margin:0 auto;flex-wrap:wrap;justify-content:center;">
+              <input class="email-input" type="email" placeholder="your@email.com" autocomplete="email" aria-label="Email address" onkeydown="if(event.key==='Enter')handleNotify(this)" style="flex:1 1 180px;"/>
+              <button class="panel-cta" onclick="handleNotify(this.previousElementSibling)" style="white-space:nowrap;padding:0.85rem 1.4rem;">Notify me</button>
+            </div>
+            <p style="font-size:0.68rem;color:var(--muted);margin-top:0.6rem;">No spam. Unsubscribe any time.</p>
+          </div>
+
         </div>
       </div>
 
-      <!-- SHOPPER PANEL -->
+      <!-- ══ SHOPPER PANEL ══ -->
       <div class="panel" id="panel-shopper">
         <div class="panel-inner">
           <h2 class="panel-headline">Find something <em>truly one of a kind</em></h2>
-          <p class="panel-sub">No more settling for mass-produced gifts that feel generic. ArtisansWeb brings every UK handmade seller together in one beautiful boutique marketplace — so you can browse, discover, and buy unique handmade goods from the comfort of your sofa, any time you like. We are also home to a dedicated Wellness Corner for crystals, reiki, meditation accessories and more.</p>
+          <p class="panel-sub">No more settling for generic gifts. ArtisansWeb brings every UK handmade seller together in one beautiful boutique marketplace — browse, discover, and buy unique handmade goods from the comfort of your sofa, any time you like.</p>
 
-          <!-- Buyer benefit cards — real emotional reasons to shop here -->
-          <div class="panel-benefits" style="margin-bottom:1.6rem;">
-            <div class="pb">
-              <div class="pb-icon">🏠</div>
-              <div class="pb-text">
-                <h4>No more draughty village halls</h4>
-                <p>No driving across town, paying for parking, queuing at the door, and walking through a freezing hall hoping the stall you wanted is still there. ArtisansWeb is open 24/7, warm and waiting.</p>
-              </div>
-            </div>
-            <div class="pb">
-              <div class="pb-icon">🌙</div>
-              <div class="pb-text">
-                <h4>Browse when it suits you</h4>
-                <p>Midnight in your pyjamas? Saturday morning with a coffee? There are no opening hours here. Browse at your own pace, take your time, and never feel rushed to decide.</p>
-              </div>
-            </div>
-            <div class="pb">
-              <div class="pb-icon">😊</div>
-              <div class="pb-text">
-                <h4>No awkward eye contact</h4>
-                <p>We've all walked past a stall not wanting to make eye contact in case we feel obligated to buy. Here you browse freely, add to your basket when you're ready, and no one minds.</p>
-              </div>
-            </div>
-            <div class="pb">
-              <div class="pb-icon">✨</div>
-              <div class="pb-text">
-                <h4>Gifts that are genuinely unique</h4>
-                <p>Every item is made by hand. No two are exactly alike. Give a gift that can't be found on the high street — something someone will actually remember receiving.</p>
-              </div>
-            </div>
-            <div class="pb">
-              <div class="pb-icon">🇬🇧</div>
-              <div class="pb-text">
-                <h4>Support real UK makers</h4>
-                <p>Every purchase goes directly to the person who made it — a real person, in the UK, doing what they love. Not a warehouse. Not a drop-shipper. A maker.</p>
-              </div>
-            </div>
-            <div class="pb">
-              <div class="pb-icon">🎁</div>
-              <div class="pb-text">
-                <h4>Everything in one place</h4>
-                <p>Candles, jewellery, artwork, bath bombs, ceramics, macramé, wax melts, crystals, wellness items — all in one marketplace. No more trawling five different websites for gift ideas.</p>
-              </div>
-            </div>
+          <div class="panel-benefits">
+            <div class="pb"><div class="pb-icon">🏠</div><div class="pb-text"><h4>No more draughty village halls</h4><p>No driving across town, paying for parking, queueing at the door and walking through a cold hall hoping the stall you wanted is still there. ArtisansWeb is open 24/7.</p></div></div>
+            <div class="pb"><div class="pb-icon">🌙</div><div class="pb-text"><h4>Browse when it suits you</h4><p>Midnight in your pyjamas? Saturday morning with a coffee? No opening hours here. Browse at your own pace, take your time, and never feel rushed.</p></div></div>
+            <div class="pb"><div class="pb-icon">😊</div><div class="pb-text"><h4>No awkward eye contact</h4><p>We&apos;ve all walked past a stall not wanting to make eye contact in case we feel obligated. Here you browse freely and buy when you&apos;re ready — no pressure.</p></div></div>
+            <div class="pb"><div class="pb-icon">✨</div><div class="pb-text"><h4>Gifts that are genuinely unique</h4><p>Every item is made by hand. No two are exactly alike. Give a gift that can&apos;t be found on the high street — something someone will actually remember receiving.</p></div></div>
+            <div class="pb"><div class="pb-icon">🇬🇧</div><div class="pb-text"><h4>Support real UK makers</h4><p>Every purchase goes directly to the person who made it — a real person, in the UK, doing what they love. Not a warehouse. Not a drop-shipper. A maker.</p></div></div>
+            <div class="pb"><div class="pb-icon">🎁</div><div class="pb-text"><h4>Everything in one place</h4><p>Candles, jewellery, artwork, bath bombs, ceramics, wax melts, crystals and more — all in one beautiful marketplace. No more trawling five different websites for gift ideas.</p></div></div>
           </div>
 
-          <!-- Category pills -->
           <div class="category-grid">
             <span class="cat-pill">🕯️ Soy candles</span>
             <span class="cat-pill">💍 Jewellery</span>
@@ -969,125 +965,37 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
             <span class="cat-pill">🔮 Crystals &amp; reiki</span>
             <span class="cat-pill">🪬 Hamsa &amp; wellness</span>
             <span class="cat-pill">🧘 Meditation accessories</span>
-            <span class="cat-pill">✨ Wellness gifts</span>
           </div>
 
-          <a class="panel-cta" href="#notify">Notify me when we open &rarr;</a>
+          <!-- Wellness Corner — shopper context -->
+          <div style="margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid rgba(201,168,76,0.15);">
+            <div style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--lavender);margin-bottom:0.8rem;">✦ &nbsp;The Wellness Corner</div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--charcoal);margin-bottom:0.6rem;">Handmade for your wellbeing</h3>
+            <p style="font-size:0.9rem;color:var(--muted);font-weight:300;line-height:1.75;max-width:640px;">Nestled within ArtisansWeb is a dedicated Wellness Corner — a curated space for spiritual wellbeing items that help you slow down, eliminate stress, and feel better every day. Crystals, reiki tools, meditation accessories, chakra candles, hamsa protection pieces and more. Some handmade, all intentional. Because in a world that never stops, your wellbeing isn&apos;t a luxury. It&apos;s essential.</p>
+          </div>
+
+          <!-- Email notify inline -->
+          <div style="background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(232,180,184,0.07));border:1.5px solid rgba(201,168,76,0.22);border-radius:12px;padding:1.6rem 2rem;margin-top:2rem;text-align:center;">
+            <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--charcoal);margin-bottom:0.4rem;">Be first through our doors</p>
+            <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.2rem;font-weight:300;">Leave your email and we&apos;ll notify you the moment we open.</p>
+            <div style="display:flex;gap:0.6rem;max-width:400px;margin:0 auto;flex-wrap:wrap;justify-content:center;">
+              <input class="email-input" type="email" placeholder="your@email.com" autocomplete="email" aria-label="Email address" onkeydown="if(event.key==='Enter')handleNotify(this)" style="flex:1 1 180px;"/>
+              <button class="panel-cta" onclick="handleNotify(this.previousElementSibling)" style="white-space:nowrap;padding:0.85rem 1.4rem;">Notify me</button>
+            </div>
+            <p style="font-size:0.68rem;color:var(--muted);margin-top:0.6rem;">No spam. Unsubscribe any time.</p>
+          </div>
+
         </div>
       </div>
 
-<!-- ══ FOUNDER SECTION ══ -->
-<section class="founder" id="founder">
-  <div class="founder-inner">
-
-    <span class="founder-eye">From the founder</span>
-    <h2 class="founder-h2">
-      Built by a maker who <em>gets it</em> —<br/>
-      because I've lived every bit of it
-    </h2>
-
-    <div class="founder-body">
-
-      <div class="founder-text">
-        <p>
-          I spend my spare time doing what I love — <strong>making beautiful, handcrafted items</strong>.
-          Perfecting designs. Coming up with new ideas. Trying to stand out, be unique, be above the rest.
-          But somewhere between the candle pours and the resin moulds, I also had to figure out
-          social media, write posts, design adverts, set up market stalls, raise a family,
-          hold down a full-time job, and somehow carve out a future in a world being reshaped by AI —
-          <em>a world that's uncertain for all of us, and for our children too.</em>
-        </p>
-        <p>
-          I've stood at market stalls in village halls watching people walk straight past.
-          I've smiled at browsers who wouldn't make eye contact. I've packed up my carefully
-          crafted products — products I spent hours making — and driven home having barely
-          covered the stall fee. I've relied on organisers who didn't market the event.
-          I've set up on days when families chose days out instead, and watched my target audience
-          dwindle away along with my energy, my confidence, and my belief.
-          <strong>Doubt crept in. It always does.</strong>
-        </p>
-        <p>
-          The craft market model is beginning to break away for makers — and it's no wonder.
-          Work out the real cost of a season of markets: stall fees of £15 or more each time,
-          fuel there and back, the hours spent making stock, packing, setting up, standing all day,
-          breaking down, driving home — and you come home having barely broken even, if at all.
-          Your time has a value. Your craft has a value. The current model often ignores both.
-          You're doing everything — the making, the marketing, the selling, the smiling —
-          all on your own. It's exhausting. And it doesn't have to be this way.
-        </p>
-        <p>
-          <strong>So I decided to fix it.</strong> The same way I fixed my own CLP compliance struggles with <a href="https://clpeasy.com" target="_blank" style="color:var(--gold-dark);font-weight:600;text-decoration:underline;">CLPeasy</a>. The same way I built <a href="https://craftymousegifts.com" target="_blank" style="color:var(--gold-dark);font-weight:600;text-decoration:underline;">Crafty Mouse Gifts</a> to sell my own handmade products properly online. I come from <strong>25+ years in enterprise IT</strong> —
-          I've supported a Formula 1 team, worked at a global tech company, and spent decades
-          solving complex problems with technology. Now I'm using every bit of that experience
-          to build something for <em>us</em>.
-        </p>
-        <p>
-          ArtisansWeb is your tribe. A space where makers and buyers who know exactly what they want
-          find each other, and — not in a draughty village hall, but in a beautiful boutique marketplace
-          open 24 hours a day, 365 days a year, reaching every corner of the UK.
-          <em>No more hoping. No more doubt. Just you, your craft, and the people who will love it.</em>
-        </p>
-
-        <!-- The market stall pain points -->
-        <div class="market-pain">
-          <h3>Sound familiar? We can stop this — and stop it now.</h3>
-          <div class="market-pain-grid">
-            <div class="mp"><div class="mp-icon">😔</div><h4>People just walk past</h4><p>Hours of prep, a full stall, and buyers who won't stop or engage — on either side.</p></div>
-            <div class="mp"><div class="mp-icon">📍</div><h4>Limited to one location</h4><p>One town. One hall. One day. Your market is as small as your postcode.</p></div>
-            <div class="mp"><div class="mp-icon">💸</div><h4>Fees with no guarantees</h4><p>Stall fees paid regardless of sales. Organisers who don't market the event fully.</p></div>
-            <div class="mp"><div class="mp-icon">📅</div><h4>Competing with everything</h4><p>Bank holidays, school events, bad weather, family days out — your audience disappears.</p></div>
-            <div class="mp"><div class="mp-icon">⏰</div><h4>Hours of unpaid setup</h4><p>Loading the car, setting up, breaking down — before you've sold a single thing.</p></div>
-            <div class="mp"><div class="mp-icon">💭</div><h4>Doubt creeps in</h4><p>Energy drains. Confidence wavers. You wonder if it's worth it. It is. You just need the right platform.</p></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Founder card -->
-      <div class="founder-card">
-        <div class="founder-card-name">Michaela Feeley</div>
-        <div class="founder-card-title">Founder · ArtisansWeb</div>
-
-        <div class="founder-stats">
-          <div class="founder-stat">
-            <div class="founder-stat-icon">💻</div>
-            <div class="founder-stat-text"><strong>25+ years in enterprise IT</strong>Including Formula 1 team support &amp; global enterprise tech</div>
-          </div>
-          <div class="founder-stat">
-            <div class="founder-stat-icon">🕯️</div>
-            <div class="founder-stat-text"><strong>Handmade maker</strong> — Candles, wax melts &amp; resin at <a href="https://craftymousegifts.com" target="_blank" style="color:var(--gold-dark);text-decoration:none;">Crafty Mouse Gifts</a></div>
-          </div>
-          <div class="founder-stat">
-            <div class="founder-stat-icon">⚗️</div>
-            <div class="founder-stat-text"><strong><a href="https://clpeasy.com" target="_blank" style="color:var(--gold-dark);text-decoration:none;">CLPeasy</a></strong> — CLP label compliance tool built for UK makers</div>
-          </div>
-          <div class="founder-stat">
-            <div class="founder-stat-icon">🛍️</div>
-            <div class="founder-stat-text"><strong>Been there, done it</strong>Market stalls, online shops, late nights, self-doubt &amp; all</div>
-          </div>
-        </div>
-
-        <div class="founder-quote">
-          &ldquo;I build things that fix problems I&apos;ve lived through myself. ArtisansWeb is the platform I always needed but couldn&apos;t find. So I built it.&rdquo;
-        </div>
-
-        <div class="founder-cta-row">
-          <a class="panel-cta" href="#notify">Join the waitlist &rarr;</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-    </div>
+    </div><!-- /benefit-panels -->
 
     <div class="trust-bar">
       <div class="trust-item"><span class="tdot"></span>Handmade only</div>
       <div class="trust-item"><span class="tdot"></span>UK makers &amp; buyers</div>
       <div class="trust-item"><span class="tdot"></span>Stripe secure payments</div>
       <div class="trust-item"><span class="tdot"></span>No commission fees</div>
-      <div class="trust-item"><span class="tdot"></span>Wellness &amp; crystal space</div>
+      <div class="trust-item"><span class="tdot"></span>Wellness Corner</div>
     </div>
   </div>
 
@@ -1210,69 +1118,6 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
 </section>
 
 
-<!-- ══ WHY FOR MAKERS ══ -->
-<section class="why" id="why">
-  <div class="why-inner">
-    <span class="sec-eye">For makers</span>
-    <h2 class="why-h2">Stop giving away your<br/><em>hard-earned profit</em></h2>
-    <p class="why-sub">Etsy charges 6.5% per sale plus listing fees plus payment processing. On £500 of sales you hand over £40+ before paying for a single ingredient. We charge nothing per sale. Ever.</p>
-    <div class="ad-reach">
-      <h3>🎯 Maximum exposure to buyers actively sourcing handmade goods</h3>
-      <p>We invest our marketing budget directly where buyers who seek out quality, unique handmade products — and wellness items — spend their time. Your shop gets discovered by the right people, every single day.</p>
-      <div class="ad-tags">
-        <span class="ad-tag">Pinterest boards</span><span class="ad-tag">Instagram Reels</span>
-        <span class="ad-tag">Facebook craft groups</span><span class="ad-tag">TikTok #handmade</span>
-        <span class="ad-tag">Wellness communities</span><span class="ad-tag">Crystal &amp; reiki groups</span>
-        <span class="ad-tag">UK gift guides</span><span class="ad-tag">Google Shopping</span>
-        <span class="ad-tag">Maker communities</span><span class="ad-tag">Seasonal gift campaigns</span>
-        <span class="ad-tag">Wedding &amp; events buyers</span><span class="ad-tag">Mindfulness audiences</span>
-      </div>
-    </div>
-    <div class="stat-row">
-      <div class="stat-block"><div class="sn">0%</div><div class="sl">Commission on every sale.<br/>You keep what you earn.</div></div>
-      <div class="stat-block"><div class="sn">£10</div><div class="sl">Flat monthly fee.<br/>Everything included.</div></div>
-      <div class="stat-block"><div class="sn">100%</div><div class="sl">Handmade only.<br/>No mass-produced clutter.</div></div>
-      <div class="stat-block"><div class="sn">UK</div><div class="sl">Built for UK makers.<br/>Buyers who value craft.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ COMPARE ══ -->
-<section class="compare">
-  <div class="compare-inner">
-    <span class="sec-eye" style="color:var(--gold-dark);">The numbers don&apos;t lie</span>
-    <h2 class="cmp-h2">What you keep from<br/><em>£500 of handmade sales</em></h2>
-    <p class="cmp-sub">Etsy charges 6.5% transaction fee + £0.20 per listing + payment processing. That&apos;s your materials money walking out the door every month.</p>
-    <table class="compare-table">
-      <thead><tr><th>Platform</th><th>ArtisansWeb ✦</th><th>Etsy</th><th>Shopify Starter</th></tr></thead>
-      <tbody>
-        <tr><td>Monthly fee</td><td class="aw-col">From £10</td><td>£0 (but&hellip;)</td><td>£29+/mo</td></tr>
-        <tr><td>Commission per sale</td><td class="aw-col"><span class="check">✦ 0%</span></td><td><span class="cross">✕ 6.5%</span></td><td><span class="cross">✕ 0&ndash;2%</span></td></tr>
-        <tr><td>Kept from £500 of sales</td><td class="aw-col"><span class="check">~£490</span></td><td><span class="cross">~£450</span></td><td><span class="cross">~£461</span></td></tr>
-        <tr><td>Handmade products only</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="cross">✕ No</span></td><td><span class="cross">✕ No</span></td></tr>
-        <tr><td>Dedicated wellness space</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="cross">✕ No</span></td><td><span class="cross">✕ No</span></td></tr>
-        <tr><td>Your own branded shop</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="cross">✕ Etsy-branded</span></td><td><span class="check">✦ Yes</span></td></tr>
-        <tr><td>Marketplace audience included</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="check">✦ Yes</span></td><td><span class="cross">✕ No</span></td></tr>
-        <tr><td>Targeted handmade advertising</td><td class="aw-col"><span class="check">✦ Included</span></td><td><span class="cross">✕ You pay extra</span></td><td><span class="cross">✕ No</span></td></tr>
-        <tr><td>Legal docs included</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="cross">✕ No</span></td><td><span class="cross">✕ No</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- ══ HOW IT WORKS ══ -->
-<section class="how">
-  <span class="sec-eye" style="color:var(--gold-dark);">Getting started</span>
-  <h2 class="how-h2">Open your shop in an afternoon</h2>
-  <p class="how-sub">No developers. No tech headaches. Any maker can be live the same day.</p>
-  <div class="steps">
-    <div class="step"><div class="step-n">1</div><h3>Sign up &amp; brand your shop</h3><p>Add your logo, colours, and maker story. Takes less than 20 minutes.</p></div>
-    <div class="step"><div class="step-n">2</div><h3>Add your products</h3><p>Upload photos, set prices and stock. As easy as posting on Instagram.</p></div>
-    <div class="step"><div class="step-n">3</div><h3>Connect Stripe</h3><p>Payments go straight to you. We never hold your money.</p></div>
-    <div class="step"><div class="step-n">4</div><h3>Start selling</h3><p>Your shop goes live in the main marketplace and the Wellness Corner. We drive the buyers.</p></div>
-  </div>
-</section>
-
 <!-- ══ EMAIL ══ -->
 <section class="email-sec" id="notify">
   <div class="email-inner">
@@ -1311,19 +1156,30 @@ function scrollToHero() {
   }, 80);
 }
 function showPanel(type) {
-  document.getElementById('pill-maker').classList.toggle('active', type === 'maker');
-  document.getElementById('pill-shopper').classList.toggle('active', type === 'shopper');
-  document.getElementById('panel-maker').classList.toggle('active', type === 'maker');
-  document.getElementById('panel-shopper').classList.toggle('active', type === 'shopper');
+  var alreadyOpen = document.getElementById('pill-' + type).classList.contains('active');
+  // Deactivate both
+  ['maker','shopper'].forEach(function(t){
+    document.getElementById('pill-' + t).classList.remove('active');
+    document.getElementById('panel-' + t).classList.remove('active');
+  });
+  // If wasn't already open, open it
+  if (!alreadyOpen) {
+    document.getElementById('pill-' + type).classList.add('active');
+    document.getElementById('panel-' + type).classList.add('active');
+    // Smooth scroll to panel
+    setTimeout(function(){
+      document.getElementById('panel-' + type).scrollIntoView({behavior:'smooth', block:'nearest'});
+    }, 80);
+  }
 }
-function handleNotify() {
-  const email = document.getElementById('email-field').value.trim();
-  const input = document.getElementById('email-field');
-  if (!email || !email.includes('@')) { input.style.borderColor = 'var(--blush-deep)'; input.focus(); return; }
-  input.style.borderColor = '';
-  document.getElementById('email-form').style.display = 'none';
-  document.getElementById('email-note').style.display = 'none';
-  document.getElementById('email-success').classList.add('show');
+function handleNotify(inputEl) {
+  if (!inputEl) inputEl = document.getElementById('email-field');
+  const email = inputEl.value.trim();
+  if (!email || !email.includes('@')) { inputEl.style.borderColor = 'var(--blush-deep)'; inputEl.focus(); return; }
+  inputEl.style.borderColor = '';
+  // Replace the form row with a success message
+  var row = inputEl.parentElement;
+  row.innerHTML = '<p style="color:var(--gold-dark);font-weight:600;font-size:0.92rem;">✓ You're on the list — we'll see you when we open!</p>';
   // TODO: POST { email } to Supabase edge function → Brevo
 }
 
