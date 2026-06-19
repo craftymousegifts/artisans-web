@@ -429,90 +429,120 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
 /* ══ NAV ══ */
 .site-nav{
   position:fixed;top:0;left:0;right:0;z-index:999;
-  background:rgba(250,246,241,0.96);
-  backdrop-filter:blur(10px);
+  background:rgba(250,246,241,0.97);
+  backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(201,168,76,0.2);
-  padding:0 0;
 }
-.nav-inner{
-  display:flex;align-items:center;justify-content:space-between;
-  max-width:1200px;margin:0 auto;
-  padding:0 1.5rem;
-  height:64px;
-  gap:0.5rem;
+/* Row 1 — logo centred with craft icons either side */
+.nav-top{
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  padding:0.5rem 1.5rem 0.2rem;
+  border-bottom:1px solid rgba(201,168,76,0.08);
 }
-.nav-craft-left,.nav-craft-right{
-  flex-shrink:0;
-  display:flex;align-items:center;
-  height:48px;
+.nav-logo-centre{
+  display:flex;align-items:center;justify-content:center;
+  gap:0.7rem;text-decoration:none;
 }
-.nav-craft-left svg,.nav-craft-right svg{
-  height:44px;width:auto;
-  overflow:visible;
+.nav-logo-img{
+  width:48px;height:48px;
+  object-fit:contain;mix-blend-mode:multiply;
 }
-.nav-links{
-  display:flex;align-items:center;gap:0;
-  flex:1;justify-content:center;
-  flex-wrap:nowrap;
-}
-.nav-links a{
+.nav-logo-name{
   font-family:'Cormorant Garamond',serif;
-  font-size:0.82rem;font-weight:600;
+  font-size:1.3rem;font-weight:700;
+  color:var(--charcoal);letter-spacing:0.04em;
+}
+.nav-logo-name span{color:var(--gold-dark);}
+
+/* Craft icons left and right of logo */
+.nav-craft-left{
+  position:absolute;left:1rem;top:50%;transform:translateY(-50%);
+  display:flex;align-items:center;
+}
+.nav-craft-right{
+  position:absolute;right:1rem;top:50%;transform:translateY(-50%);
+  display:flex;align-items:center;
+}
+.nav-craft-left svg,.nav-craft-right svg{height:40px;width:auto;}
+
+/* Row 2 — flat nav links */
+.nav-bottom{
+  display:flex;align-items:center;justify-content:center;
+  gap:0;padding:0.2rem 1rem 0.4rem;
+  flex-wrap:nowrap;overflow-x:auto;
+}
+.nav-bottom::-webkit-scrollbar{display:none;}
+.nav-bottom a{
+  font-family:'Cormorant Garamond',serif;
+  font-size:0.85rem;font-weight:600;
   color:var(--muted);text-decoration:none;
-  letter-spacing:0.04em;
-  padding:0.4em 0.6em;
+  letter-spacing:0.03em;
+  padding:0.35em 0.9em;
   white-space:nowrap;
   transition:color 0.2s;
   border-bottom:2px solid transparent;
+  border-radius:0;
 }
-.nav-links a:hover{color:var(--gold-dark);}
-.nav-links a.active{color:var(--charcoal);border-bottom-color:var(--gold);}
-.nav-notify{
+.nav-bottom a:hover{color:var(--gold-dark);}
+.nav-bottom a.active{color:var(--charcoal);border-bottom-color:var(--gold);}
+.nav-bottom .nav-sep{
+  color:rgba(201,168,76,0.35);
+  font-size:0.7rem;
+  padding:0 0.1em;
+  pointer-events:none;
+  user-select:none;
+}
+.nav-notify-btn{
   background:linear-gradient(135deg,var(--gold-dark),var(--gold));
-  color:#2A1F1A;border:none;border-radius:3em;
-  padding:0.45em 1.1em;
-  font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:700;
-  cursor:pointer;text-decoration:none;
+  color:#2A1F1A!important;
+  border:none;border-radius:3em!important;
+  padding:0.35em 1.1em!important;
+  font-family:'DM Sans',sans-serif!important;
+  font-size:0.72rem!important;font-weight:700!important;
+  cursor:pointer;
   letter-spacing:0.05em;text-transform:uppercase;
-  white-space:nowrap;flex-shrink:0;
-  transition:transform 0.2s,box-shadow 0.2s;
-  box-shadow:0 2px 12px rgba(201,168,76,0.3);
+  box-shadow:0 2px 10px rgba(201,168,76,0.3);
+  transition:transform 0.2s,box-shadow 0.2s!important;
+  border-bottom:none!important;
+  margin-left:0.5rem;
 }
-.nav-notify:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(201,168,76,0.4);}
+.nav-notify-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(201,168,76,0.4);}
 
-/* Mobile nav */
-.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:0.4rem;}
+/* Mobile */
+.nav-hamburger{display:none;position:absolute;right:1rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;padding:0.4rem;}
 .nav-mobile-menu{
-  display:none;
-  position:fixed;top:64px;left:0;right:0;
-  background:rgba(250,246,241,0.98);
-  backdrop-filter:blur(10px);
+  display:none;position:fixed;
+  top:var(--nav-height,96px);left:0;right:0;
+  background:rgba(250,246,241,0.99);
+  backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(201,168,76,0.2);
   padding:1rem 1.5rem;
-  flex-direction:column;gap:0.2rem;
-  z-index:998;
+  flex-direction:column;gap:0;z-index:998;
 }
 .nav-mobile-menu.open{display:flex;}
 .nav-mobile-menu a{
   font-family:'Cormorant Garamond',serif;
   font-size:1.1rem;font-weight:600;
   color:var(--muted);text-decoration:none;
-  padding:0.6rem 0;
+  padding:0.7rem 0;
   border-bottom:1px solid rgba(201,168,76,0.1);
+  display:block;
 }
-.nav-mobile-menu a:last-of-type{border-bottom:none;}
 .nav-mobile-menu a:hover{color:var(--gold-dark);}
-
-/* Push hero down so nav doesn't cover it */
-.hero{padding-top:calc(3rem + 64px);}
-
-@media(max-width:900px){
-  .nav-craft-left,.nav-craft-right,.nav-links{display:none;}
-  .nav-hamburger{display:block;}
-  .nav-inner{justify-content:space-between;}
+.nav-mobile-menu .mob-notify{
+  color:var(--gold-dark)!important;font-weight:700;
+  border-bottom:none!important;margin-top:0.5rem;
 }
-@media(max-width:640px){
-  .nav-mobile-menu a{font-size:1rem;}
+
+/* Push hero down — two-row nav ~96px tall */
+.hero{padding-top:calc(3rem + 96px);}
+
+@media(max-width:860px){
+  .nav-craft-left,.nav-craft-right{display:none;}
+  .nav-bottom{display:none;}
+  .nav-hamburger{display:block;}
+  .nav-top{padding:0.6rem 3rem;}
 }
 </style>
 </head>
@@ -520,71 +550,121 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
 
 <!-- ══ NAV ══ -->
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
-  <div class="nav-inner">
 
-    <!-- Left craft tool icons — pure SVG, mathematically positioned, no images -->
+  <!-- Row 1: craft icons + logo centred -->
+  <div class="nav-top">
+
+    <!-- Left craft icons -->
     <div class="nav-craft-left" aria-hidden="true">
-      <svg viewBox="0 0 180 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 190 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         <!-- Paintbrush -->
-        <g transform="translate(8,4)">
-          <line x1="8" y1="0" x2="8" y2="22" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
-          <rect x="5" y="22" width="6" height="4" rx="1" fill="#A07830" opacity="0.7"/>
-          <ellipse cx="8" cy="29" rx="4" ry="5" fill="#E8B4B8" opacity="0.85"/>
-          <rect x="3.5" y="4" width="9" height="3" rx="1" fill="#C9A84C" opacity="0.4"/>
+        <g transform="translate(4,2)">
+          <line x1="8" y1="0" x2="8" y2="20" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
+          <rect x="5" y="20" width="6" height="3" rx="1" fill="#A07830" opacity="0.7"/>
+          <ellipse cx="8" cy="26" rx="3.5" ry="4.5" fill="#E8B4B8" opacity="0.85"/>
         </g>
         <!-- Paint palette -->
-        <g transform="translate(28,6)">
-          <ellipse cx="12" cy="16" rx="12" ry="9" fill="#FAF6F1" stroke="#E8B4B8" stroke-width="1.2"/>
-          <circle cx="8" cy="12" r="2.5" fill="#E8B4B8" opacity="0.9"/>
-          <circle cx="14" cy="10" r="2" fill="#C9A84C" opacity="0.7"/>
-          <circle cx="18" cy="15" r="2" fill="#E8D08A" opacity="0.8"/>
-          <circle cx="12" cy="20" r="2" fill="#E8B4B8" opacity="0.6"/>
-          <circle cx="6" cy="18" r="2" fill="#C9A84C" opacity="0.5"/>
-          <ellipse cx="15" cy="21" rx="4" ry="3" fill="#FAF6F1" stroke="#E8B4B8" stroke-width="0.8"/>
+        <g transform="translate(24,5)">
+          <ellipse cx="11" cy="14" rx="11" ry="8" fill="#FAF6F1" stroke="#E8B4B8" stroke-width="1"/>
+          <circle cx="7" cy="10" r="2" fill="#E8B4B8" opacity="0.9"/>
+          <circle cx="13" cy="8" r="1.8" fill="#C9A84C" opacity="0.7"/>
+          <circle cx="17" cy="13" r="1.8" fill="#E8D08A" opacity="0.8"/>
+          <circle cx="11" cy="18" r="1.8" fill="#E8B4B8" opacity="0.6"/>
+          <ellipse cx="14" cy="19" rx="3.5" ry="2.5" fill="#FAF6F1" stroke="#E8B4B8" stroke-width="0.7"/>
         </g>
         <!-- Candle -->
-        <g transform="translate(66,2)">
-          <rect x="4" y="14" width="10" height="20" rx="2" fill="#E8B4B8" opacity="0.7"/>
-          <rect x="6" y="10" width="6" height="5" rx="1" fill="#C9A84C" opacity="0.5"/>
-          <line x1="9" y1="2" x2="9" y2="10" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
-          <ellipse cx="9" cy="2" rx="2.5" ry="3.5" fill="#E8D08A" opacity="0.9"/>
-          <ellipse cx="9" cy="1" rx="1.2" ry="1.5" fill="#C9A84C" opacity="0.7"/>
+        <g transform="translate(58,2)">
+          <rect x="3" y="12" width="9" height="18" rx="2" fill="#E8B4B8" opacity="0.7"/>
+          <rect x="5" y="8" width="5" height="5" rx="1" fill="#C9A84C" opacity="0.5"/>
+          <line x1="7.5" y1="1" x2="7.5" y2="8" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+          <ellipse cx="7.5" cy="1" rx="2" ry="3" fill="#E8D08A" opacity="0.9"/>
         </g>
         <!-- Cotton reel -->
-        <g transform="translate(96,4)">
-          <rect x="2" y="8" width="14" height="18" rx="2" fill="#FAF6F1" stroke="#C9A84C" stroke-width="1"/>
-          <rect x="0" y="8" width="18" height="5" rx="2" fill="#E8B4B8" opacity="0.8"/>
-          <rect x="0" y="21" width="18" height="5" rx="2" fill="#E8B4B8" opacity="0.8"/>
-          <line x1="9" y1="0" x2="9" y2="8" stroke="#C9A84C" stroke-width="1" stroke-dasharray="2 1.5"/>
-          <ellipse cx="9" cy="17" rx="5" ry="4" fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.4"/>
+        <g transform="translate(82,3)">
+          <rect x="2" y="7" width="13" height="16" rx="2" fill="#FAF6F1" stroke="#C9A84C" stroke-width="0.9"/>
+          <rect x="0" y="7" width="17" height="4.5" rx="2" fill="#E8B4B8" opacity="0.8"/>
+          <rect x="0" y="18.5" width="17" height="4.5" rx="2" fill="#E8B4B8" opacity="0.8"/>
+          <line x1="8.5" y1="0" x2="8.5" y2="7" stroke="#C9A84C" stroke-width="1" stroke-dasharray="2 1.5"/>
         </g>
         <!-- Needle -->
-        <g transform="translate(126,2)">
-          <line x1="5" y1="2" x2="12" y2="36" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round"/>
-          <ellipse cx="6" cy="3" rx="2.5" ry="2" fill="none" stroke="#C9A84C" stroke-width="1.2"/>
-          <path d="M14 34 Q20 28 26 32 Q22 36 18 38 Z" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.6"/>
-          <path d="M16 31 Q24 24 30 29" fill="none" stroke="#E8B4B8" stroke-width="1.2" opacity="0.8"/>
+        <g transform="translate(112,1)">
+          <line x1="4" y1="2" x2="10" y2="32" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+          <ellipse cx="4.5" cy="3" rx="2.2" ry="1.8" fill="none" stroke="#C9A84C" stroke-width="1.1"/>
+          <path d="M12 30 Q16 25 20 28 Q17 32 14 34 Z" fill="none" stroke="#C9A84C" stroke-width="0.9" opacity="0.6"/>
         </g>
         <!-- Crystal -->
-        <g transform="translate(158,4)">
-          <polygon points="9,0 16,8 9,24 2,8" fill="none" stroke="#C9A84C" stroke-width="1.2"/>
-          <polygon points="9,0 16,8 9,24 2,8" fill="#E8D08A" opacity="0.12"/>
-          <line x1="2" y1="8" x2="16" y2="8" stroke="#C9A84C" stroke-width="0.7" opacity="0.5"/>
-          <line x1="9" y1="0" x2="9" y2="24" stroke="#C9A84C" stroke-width="0.5" opacity="0.3"/>
+        <g transform="translate(144,3)">
+          <polygon points="8,0 14,7 8,20 2,7" fill="#E8D08A" opacity="0.13" stroke="#C9A84C" stroke-width="1.1"/>
+          <line x1="2" y1="7" x2="14" y2="7" stroke="#C9A84C" stroke-width="0.6" opacity="0.5"/>
+        </g>
+        <!-- Wax melt -->
+        <g transform="translate(164,6)">
+          <ellipse cx="11" cy="18" rx="11" ry="5.5" fill="#E8B4B8" opacity="0.5"/>
+          <ellipse cx="11" cy="15" rx="9" ry="4.5" fill="#FAF6F1" stroke="#E8B4B8" stroke-width="0.9"/>
+          <ellipse cx="11" cy="14" rx="5" ry="2.5" fill="#E8D08A" opacity="0.45"/>
+          <line x1="11" y1="3" x2="11" y2="11" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round"/>
+          <ellipse cx="11" cy="2" rx="1.8" ry="2.5" fill="#E8D08A" opacity="0.8"/>
         </g>
       </svg>
     </div>
 
-    <!-- Desktop nav links -->
-    <nav class="nav-links">
-      <a href="#" class="active">Home</a>
-      <a href="#panel-maker" onclick="showPanel('maker');return false;">I&apos;m a Maker</a>
-      <a href="#panel-shopper" onclick="showPanel('shopper');return false;">Shop Handmade</a>
-      <a href="#wellness">Wellness Corner</a>
-      <a href="#founder">Founder Story</a>
-    </nav>
+    <!-- Logo centred -->
+    <a class="nav-logo-centre" href="#">
+      <img class="nav-logo-img" src="logo.png" alt="ArtisansWeb"/>
+      <span class="nav-logo-name">Artisans<span>Web</span></span>
+    </a>
 
-    <a class="nav-notify" href="#notify">Notify Me</a>
+    <!-- Right craft icons -->
+    <div class="nav-craft-right" aria-hidden="true">
+      <svg viewBox="0 0 190 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Macrame knot -->
+        <g transform="translate(4,2)">
+          <line x1="7" y1="0" x2="7" y2="32" stroke="#C9A84C" stroke-width="1.1" opacity="0.5"/>
+          <line x1="13" y1="0" x2="13" y2="32" stroke="#C9A84C" stroke-width="1.1" opacity="0.5"/>
+          <path d="M1 9 Q7 13 13 9 Q19 5 21 9 Q19 15 13 13 Q7 17 1 13 Z" fill="#E8B4B8" opacity="0.55"/>
+          <path d="M1 19 Q7 23 13 19 Q19 15 21 19 Q19 25 13 23 Q7 27 1 23 Z" fill="#E8B4B8" opacity="0.38"/>
+        </g>
+        <!-- Knitting needles -->
+        <g transform="translate(32,1)">
+          <line x1="3" y1="2" x2="17" y2="36" stroke="#C9A84C" stroke-width="1.7" stroke-linecap="round"/>
+          <line x1="17" y1="2" x2="3" y2="36" stroke="#C9A84C" stroke-width="1.7" stroke-linecap="round"/>
+          <circle cx="3" cy="2" r="2.8" fill="#E8B4B8"/>
+          <circle cx="17" cy="2" r="2.8" fill="#E8B4B8"/>
+          <path d="M5 19 Q10 15 15 19 Q10 23 5 19" fill="#E8B4B8" opacity="0.45"/>
+        </g>
+        <!-- Crystal cluster -->
+        <g transform="translate(64,2)">
+          <polygon points="10,0 14,9 10,20 6,9" fill="#E8D08A" opacity="0.14" stroke="#C9A84C" stroke-width="0.9"/>
+          <polygon points="17,3 20,11 17,20 14,11" fill="#E8B4B8" opacity="0.18" stroke="#C9A84C" stroke-width="0.7"/>
+          <polygon points="3,5 6,13 3,20 0,13" fill="#E8D08A" opacity="0.14" stroke="#C9A84C" stroke-width="0.7"/>
+        </g>
+        <!-- Candle -->
+        <g transform="translate(96,2)">
+          <rect x="3" y="12" width="9" height="18" rx="2" fill="#E8B4B8" opacity="0.6"/>
+          <rect x="5" y="8" width="5" height="5" rx="1" fill="#C9A84C" opacity="0.5"/>
+          <line x1="7.5" y1="1" x2="7.5" y2="8" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+          <ellipse cx="7.5" cy="1" rx="2" ry="3" fill="#E8D08A" opacity="0.9"/>
+        </g>
+        <!-- Paint brush -->
+        <g transform="translate(120,2)">
+          <line x1="8" y1="0" x2="8" y2="20" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
+          <rect x="5" y="20" width="6" height="3" rx="1" fill="#A07830" opacity="0.7"/>
+          <ellipse cx="8" cy="26" rx="3.5" ry="4.5" fill="#C9A84C" opacity="0.38"/>
+        </g>
+        <!-- Cotton reel -->
+        <g transform="translate(144,3)">
+          <rect x="2" y="7" width="13" height="16" rx="2" fill="#FAF6F1" stroke="#C9A84C" stroke-width="0.9"/>
+          <rect x="0" y="7" width="17" height="4.5" rx="2" fill="#E8B4B8" opacity="0.8"/>
+          <rect x="0" y="18.5" width="17" height="4.5" rx="2" fill="#E8B4B8" opacity="0.8"/>
+          <line x1="8.5" y1="0" x2="8.5" y2="7" stroke="#C9A84C" stroke-width="1" stroke-dasharray="2 1.5"/>
+        </g>
+        <!-- Needle -->
+        <g transform="translate(174,1)">
+          <line x1="4" y1="2" x2="10" y2="32" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+          <ellipse cx="4.5" cy="3" rx="2.2" ry="1.8" fill="none" stroke="#C9A84C" stroke-width="1.1"/>
+        </g>
+      </svg>
+    </div>
 
     <!-- Mobile hamburger -->
     <button class="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Open menu">
@@ -594,74 +674,35 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
         <line x1="3" y1="16" x2="19" y2="16" stroke="#2A1F1A" stroke-width="1.8" stroke-linecap="round"/>
       </svg>
     </button>
-
-    <!-- Right craft tool icons -->
-    <div class="nav-craft-right" aria-hidden="true">
-      <svg viewBox="0 0 180 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Wax melt / tea light -->
-        <g transform="translate(4,8)">
-          <ellipse cx="11" cy="20" rx="11" ry="6" fill="#E8B4B8" opacity="0.6"/>
-          <ellipse cx="11" cy="17" rx="9" ry="5" fill="#FAF6F1" stroke="#E8B4B8" stroke-width="1"/>
-          <ellipse cx="11" cy="16" rx="5" ry="3" fill="#E8D08A" opacity="0.5"/>
-          <line x1="11" y1="4" x2="11" y2="13" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
-          <ellipse cx="11" cy="3" rx="2" ry="3" fill="#E8D08A" opacity="0.8"/>
-        </g>
-        <!-- Macrame knot -->
-        <g transform="translate(34,4)">
-          <line x1="8" y1="0" x2="8" y2="36" stroke="#C9A84C" stroke-width="1.2" opacity="0.5"/>
-          <line x1="14" y1="0" x2="14" y2="36" stroke="#C9A84C" stroke-width="1.2" opacity="0.5"/>
-          <path d="M2 10 Q8 14 14 10 Q20 6 22 10 Q20 16 14 14 Q8 18 2 14 Z" fill="#E8B4B8" opacity="0.6"/>
-          <path d="M2 20 Q8 24 14 20 Q20 16 22 20 Q20 26 14 24 Q8 28 2 24 Z" fill="#E8B4B8" opacity="0.4"/>
-          <line x1="4" y1="36" x2="4" y2="44" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
-          <line x1="8" y1="36" x2="8" y2="44" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
-          <line x1="12" y1="36" x2="12" y2="44" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
-          <line x1="16" y1="36" x2="16" y2="44" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
-          <line x1="20" y1="36" x2="20" y2="44" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
-        </g>
-        <!-- Knitting needles -->
-        <g transform="translate(70,2)">
-          <line x1="4" y1="2" x2="18" y2="38" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
-          <line x1="18" y1="2" x2="4" y2="38" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
-          <circle cx="4" cy="2" r="3" fill="#E8B4B8"/>
-          <circle cx="18" cy="2" r="3" fill="#E8B4B8"/>
-          <path d="M6 20 Q11 16 16 20 Q11 24 6 20" fill="#E8B4B8" opacity="0.5"/>
-          <path d="M5 26 Q11 22 17 26" fill="none" stroke="#E8B4B8" stroke-width="1.2" opacity="0.6"/>
-        </g>
-        <!-- Crystal cluster -->
-        <g transform="translate(102,4)">
-          <polygon points="10,0 14,10 10,22 6,10" fill="#E8D08A" opacity="0.15" stroke="#C9A84C" stroke-width="1"/>
-          <polygon points="16,4 19,12 16,22 13,12" fill="#E8B4B8" opacity="0.2" stroke="#C9A84C" stroke-width="0.8"/>
-          <polygon points="4,6 7,14 4,22 1,14" fill="#E8D08A" opacity="0.15" stroke="#C9A84C" stroke-width="0.8"/>
-        </g>
-        <!-- Paint brush right -->
-        <g transform="translate(132,4)">
-          <line x1="8" y1="0" x2="8" y2="22" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
-          <rect x="5" y="22" width="6" height="4" rx="1" fill="#A07830" opacity="0.7"/>
-          <ellipse cx="8" cy="29" rx="4" ry="5" fill="#C9A84C" opacity="0.4"/>
-          <rect x="3.5" y="4" width="9" height="3" rx="1" fill="#C9A84C" opacity="0.4"/>
-        </g>
-        <!-- Candle right -->
-        <g transform="translate(154,2)">
-          <rect x="4" y="14" width="10" height="20" rx="2" fill="#E8B4B8" opacity="0.6"/>
-          <rect x="6" y="10" width="6" height="5" rx="1" fill="#C9A84C" opacity="0.5"/>
-          <line x1="9" y1="2" x2="9" y2="10" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
-          <ellipse cx="9" cy="2" rx="2.5" ry="3.5" fill="#E8D08A" opacity="0.9"/>
-        </g>
-      </svg>
-    </div>
-
   </div>
+
+  <!-- Row 2: flat nav links -->
+  <div class="nav-bottom">
+    <a href="#" class="active">Home</a>
+    <span class="nav-sep">·</span>
+    <a href="#" onclick="showPanel('maker');scrollToHero();return false;">I&apos;m a Maker</a>
+    <span class="nav-sep">·</span>
+    <a href="#" onclick="showPanel('shopper');scrollToHero();return false;">Shop Handmade</a>
+    <span class="nav-sep">·</span>
+    <a href="#wellness">Wellness Corner</a>
+    <span class="nav-sep">·</span>
+    <a href="#founder">Founder Story</a>
+    <span class="nav-sep">·</span>
+    <a class="nav-notify-btn" href="#notify">Notify Me</a>
+  </div>
+
 </nav>
 
 <!-- Mobile menu -->
 <div class="nav-mobile-menu" id="mobile-menu">
   <a href="#" onclick="closeMobileMenu()">Home</a>
-  <a href="#panel-maker" onclick="showPanel('maker');closeMobileMenu();">I&apos;m a Maker</a>
-  <a href="#panel-shopper" onclick="showPanel('shopper');closeMobileMenu();">Shop Handmade</a>
+  <a href="#" onclick="showPanel('maker');scrollToHero();closeMobileMenu();">I&apos;m a Maker</a>
+  <a href="#" onclick="showPanel('shopper');scrollToHero();closeMobileMenu();">Shop Handmade</a>
   <a href="#wellness" onclick="closeMobileMenu()">Wellness Corner</a>
   <a href="#founder" onclick="closeMobileMenu()">Founder Story</a>
-  <a href="#notify" onclick="closeMobileMenu()" style="color:var(--gold-dark);font-weight:700;">Notify Me &rarr;</a>
+  <a href="#notify" onclick="closeMobileMenu()" class="mob-notify">Notify Me &rarr;</a>
 </div>
+
 
 <!-- ══ HERO ══ -->
 <section class="hero">
@@ -800,7 +841,55 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
       <div class="panel" id="panel-shopper">
         <div class="panel-inner">
           <h2 class="panel-headline">Find something <em>truly one of a kind</em></h2>
-          <p class="panel-sub">ArtisansWeb is a curated boutique — every item is handmade by a real person in the UK. No mass-produced imitations, no factory goods. Just genuine craft made with love. We are also home to a dedicated Wellness Corner for crystals, reiki tools, meditation accessories, chakra candles and more.</p>
+          <p class="panel-sub">No more settling for mass-produced gifts that feel generic. ArtisansWeb brings every UK handmade seller together in one beautiful boutique marketplace — so you can browse, discover, and buy unique handmade goods from the comfort of your sofa, any time you like. We are also home to a dedicated Wellness Corner for crystals, reiki, meditation accessories and more.</p>
+
+          <!-- Buyer benefit cards — real emotional reasons to shop here -->
+          <div class="panel-benefits" style="margin-bottom:1.6rem;">
+            <div class="pb">
+              <div class="pb-icon">🏠</div>
+              <div class="pb-text">
+                <h4>No more draughty village halls</h4>
+                <p>No driving across town, paying for parking, queuing at the door, and walking through a freezing hall hoping the stall you wanted is still there. ArtisansWeb is open 24/7, warm and waiting.</p>
+              </div>
+            </div>
+            <div class="pb">
+              <div class="pb-icon">🌙</div>
+              <div class="pb-text">
+                <h4>Browse when it suits you</h4>
+                <p>Midnight in your pyjamas? Saturday morning with a coffee? There are no opening hours here. Browse at your own pace, take your time, and never feel rushed to decide.</p>
+              </div>
+            </div>
+            <div class="pb">
+              <div class="pb-icon">😊</div>
+              <div class="pb-text">
+                <h4>No awkward eye contact</h4>
+                <p>We've all walked past a stall not wanting to make eye contact in case we feel obligated to buy. Here you browse freely, add to your basket when you're ready, and no one minds.</p>
+              </div>
+            </div>
+            <div class="pb">
+              <div class="pb-icon">✨</div>
+              <div class="pb-text">
+                <h4>Gifts that are genuinely unique</h4>
+                <p>Every item is made by hand. No two are exactly alike. Give a gift that can't be found on the high street — something someone will actually remember receiving.</p>
+              </div>
+            </div>
+            <div class="pb">
+              <div class="pb-icon">🇬🇧</div>
+              <div class="pb-text">
+                <h4>Support real UK makers</h4>
+                <p>Every purchase goes directly to the person who made it — a real person, in the UK, doing what they love. Not a warehouse. Not a drop-shipper. A maker.</p>
+              </div>
+            </div>
+            <div class="pb">
+              <div class="pb-icon">🎁</div>
+              <div class="pb-text">
+                <h4>Everything in one place</h4>
+                <p>Candles, jewellery, artwork, bath bombs, ceramics, macramé, wax melts, crystals, wellness items — all in one marketplace. No more trawling five different websites for gift ideas.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category pills -->
           <div class="category-grid">
             <span class="cat-pill">🕯️ Soy candles</span>
             <span class="cat-pill">💍 Jewellery</span>
@@ -814,16 +903,11 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
             <span class="cat-pill">🧶 Knitted gifts</span>
             <span class="cat-pill">🪞 Home décor</span>
             <span class="cat-pill">🔮 Crystals &amp; reiki</span>
-            <span class="cat-pill">🪬 Hamsa &amp; protection</span>
+            <span class="cat-pill">🪬 Hamsa &amp; wellness</span>
             <span class="cat-pill">🧘 Meditation accessories</span>
             <span class="cat-pill">✨ Wellness gifts</span>
           </div>
-          <div class="panel-benefits">
-            <div class="pb"><div class="pb-icon">✨</div><div class="pb-text"><h4>Genuinely unique</h4><p>Every item is made by hand. No two are exactly alike. A gift that truly means something.</p></div></div>
-            <div class="pb"><div class="pb-icon">🇬🇧</div><div class="pb-text"><h4>UK makers only</h4><p>Know exactly who made what you&apos;re buying. Support real people doing what they love.</p></div></div>
-            <div class="pb"><div class="pb-icon">🔮</div><div class="pb-text"><h4>Wellness Corner</h4><p>A curated section within the marketplace for handmade crystals, reiki tools, meditation accessories, chakra candles, hamsa pieces and more. Coming soon.</p></div></div>
-            <div class="pb"><div class="pb-icon">🔒</div><div class="pb-text"><h4>Safe &amp; secure</h4><p>Every shop is vetted. Stripe-secured checkout. Your purchase is protected every step.</p></div></div>
-          </div>
+
           <a class="panel-cta" href="#notify">Notify me when we open &rarr;</a>
         </div>
       </div>
@@ -1156,6 +1240,11 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
 </footer>
 
 <script>
+function scrollToHero() {
+  setTimeout(function(){
+    document.querySelector('.audience-selector').scrollIntoView({behavior:'smooth',block:'center'});
+  }, 80);
+}
 function showPanel(type) {
   document.getElementById('pill-maker').classList.toggle('active', type === 'maker');
   document.getElementById('pill-shopper').classList.toggle('active', type === 'shopper');
