@@ -1,4 +1,4 @@
-<!DOCTYPE html><!-- v2.1 -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -561,7 +561,7 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
 /* Push hero down — two-row nav ~96px tall */
 .hero{padding-top:calc(3rem + 96px);}
 
-@media(max-width:640px){
+@media(max-width:860px){
   .nav-craft-left,.nav-craft-right{display:none;}
   .nav-bottom{display:none;}
   .nav-hamburger{display:block;}
@@ -653,7 +653,7 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
 
     <!-- Logo centred -->
     <a class="nav-logo-centre" href="#">
-      <img class="nav-logo-img" src="logo.PNG" alt="ArtisansWeb"/>
+      <img class="nav-logo-img" src="logo.png" alt="ArtisansWeb"/>
       <span class="nav-logo-name">Artisans<span>Web</span></span>
     </a>
 
@@ -809,7 +809,7 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
   <div class="hero-glow"></div>
 
   <div class="hero-content">
-    <img class="logo-img" src="logo.PNG" alt="ArtisansWeb — Handmade Boutique"/>
+    <img class="logo-img" src="logo.png" alt="ArtisansWeb — Handmade Boutique"/>
 
     <div class="store-banner">
       <span class="blink"></span>
@@ -830,10 +830,10 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
       <p class="audience-label">Tell us who you are and we&apos;ll show you what&apos;s in store for you</p>
       <div class="pill-row">
         <button class="pill-btn active" onclick="showPanel('maker')" id="pill-maker">
-          I'm a Maker
+          <span class="pill-icon">🧵</span> I&apos;m a Maker
         </button>
         <button class="pill-btn" onclick="showPanel('shopper')" id="pill-shopper">
-          I'm looking for handmade items
+          <span class="pill-icon">🛍️</span> I&apos;m looking for handmade items
         </button>
       </div>
     </div>
@@ -1128,20 +1128,144 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
 <!-- ══ WELLNESS SECTION ══ -->
 <section class="wellness" id="wellness">
   <div class="wellness-inner">
-    <div class="wellness-eye">✦ &nbsp;A dedicated space within ArtisansWeb</div>
-    <h2 class="wellness-h2">The Wellness Corner<br/><em>For the soul, as much as the home</em></h2>
-    <p class="wellness-sub">ArtisansWeb is also home to a dedicated Wellness Corner — a space where sellers can showcase spiritual wellbeing items, handmade or not. Crystals, reiki tools, meditation accessories, chakra candles, hamsa pieces and more. The benefits of these products are crucial for everyone: to eliminate stress, find calm, and take care of your wellbeing every single day. Because in a world that never slows down, that matters more than ever.</p>
+
+    <div class="wellness-eye">
+      ✦ &nbsp;A dedicated space within ArtisansWeb
+    </div>
+
+    <h2 class="wellness-h2">
+      The Wellness Corner<br/>
+      <em>Handmade for mind, body &amp; soul</em>
+    </h2>
+
+    <div class="wellness-intro">
+      <p class="wellness-sub">
+        In a world that never slows down, the search for calm has never felt more urgent.
+        Nestled within ArtisansWeb is a dedicated Wellness Corner — a curated section of the marketplace
+        where handmade items crafted intentionally for peace, protection, and mindfulness come together.
+        Every piece made by hand, chosen with purpose. This isn&apos;t a trend. It&apos;s a necessity.
+      </p>
+      <div class="wellness-quote">
+        &ldquo;The things we surround ourselves with shape how we feel. Choose handmade. Choose intentional.&rdquo;
+        <cite>— ArtisansWeb Wellness Corner</cite>
+      </div>
+    </div>
+
+    <div class="wellness-grid">
+      <div class="w-card">
+        <span class="w-card-icon">🔮</span>
+        <h3>Crystals &amp; Gemstones</h3>
+        <p>Handpicked, cleansed, and often hand-wrapped or set by UK makers. Amethyst for calm, rose quartz for love, black tourmaline for protection — each piece chosen with intention.</p>
+        <span class="w-tag">Crystal healing</span>
+      </div>
+      <div class="w-card">
+        <span class="w-card-icon">🌿</span>
+        <h3>Reiki &amp; Energy Tools</h3>
+        <p>Handmade smudge bundles, energy wands, crystal grids, and Reiki-charged items crafted by trained practitioners. Tools to help clear, balance and restore your energy.</p>
+        <span class="w-tag">Reiki &amp; energy work</span>
+      </div>
+      <div class="w-card">
+        <span class="w-card-icon">🧘</span>
+        <h3>Meditation Accessories</h3>
+        <p>Handwoven meditation scarves, mala bead necklaces, cushion covers, and altar cloths — made to support stillness and help create your own sacred space at home.</p>
+        <span class="w-tag">Mindfulness</span>
+      </div>
+      <div class="w-card">
+        <span class="w-card-icon">🕯️</span>
+        <h3>Chakra &amp; Intention Candles</h3>
+        <p>Hand-poured soy candles infused with crystals, essential oils, and dried botanicals. Each one set with a specific intention — from grounding to clarity to self-love.</p>
+        <span class="w-tag">Chakra alignment</span>
+      </div>
+      <div class="w-card">
+        <span class="w-card-icon">🪬</span>
+        <h3>Hamsa &amp; Protection Symbols</h3>
+        <p>Handmade hamsa wall hangings, tealight holders, jewellery, and décor pieces — bringing the ancient symbol of protection and good fortune into your everyday space.</p>
+        <span class="w-tag">Protection &amp; luck</span>
+      </div>
+      <div class="w-card">
+        <span class="w-card-icon">🌙</span>
+        <h3>Moon &amp; Ritual Items</h3>
+        <p>Moon phase prints, lunar journals, ritual kits, and selenite charging plates — handmade items for those who find peace in cycles, seasons, and slowing down.</p>
+        <span class="w-tag">Moon rituals</span>
+      </div>
+    </div>
+
     <div class="wellness-cta-row">
-      <a class="btn-lavender" href="#notify">Notify me when we open &rarr;</a>
+      <a class="btn-lavender" href="#notify">Notify me when the Wellness Corner opens &rarr;</a>
       <a class="btn-lavender-outline" href="#notify">Register as a maker</a>
     </div>
+
+  </div>
+</section>
+
+
+<!-- ══ WHY FOR MAKERS ══ -->
+<section class="why" id="why">
+  <div class="why-inner">
+    <span class="sec-eye">For makers</span>
+    <h2 class="why-h2">Stop giving away your<br/><em>hard-earned profit</em></h2>
+    <p class="why-sub">Etsy charges 6.5% per sale plus listing fees plus payment processing. On £500 of sales you hand over £40+ before paying for a single ingredient. We charge nothing per sale. Ever.</p>
+    <div class="ad-reach">
+      <h3>🎯 Maximum exposure to buyers actively sourcing handmade goods</h3>
+      <p>We invest our marketing budget directly where buyers who seek out quality, unique handmade products — and wellness items — spend their time. Your shop gets discovered by the right people, every single day.</p>
+      <div class="ad-tags">
+        <span class="ad-tag">Pinterest boards</span><span class="ad-tag">Instagram Reels</span>
+        <span class="ad-tag">Facebook craft groups</span><span class="ad-tag">TikTok #handmade</span>
+        <span class="ad-tag">Wellness communities</span><span class="ad-tag">Crystal &amp; reiki groups</span>
+        <span class="ad-tag">UK gift guides</span><span class="ad-tag">Google Shopping</span>
+        <span class="ad-tag">Maker communities</span><span class="ad-tag">Seasonal gift campaigns</span>
+        <span class="ad-tag">Wedding &amp; events buyers</span><span class="ad-tag">Mindfulness audiences</span>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-block"><div class="sn">0%</div><div class="sl">Commission on every sale.<br/>You keep what you earn.</div></div>
+      <div class="stat-block"><div class="sn">£10</div><div class="sl">Flat monthly fee.<br/>Everything included.</div></div>
+      <div class="stat-block"><div class="sn">100%</div><div class="sl">Handmade only.<br/>No mass-produced clutter.</div></div>
+      <div class="stat-block"><div class="sn">UK</div><div class="sl">Built for UK makers.<br/>Buyers who value craft.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMPARE ══ -->
+<section class="compare">
+  <div class="compare-inner">
+    <span class="sec-eye" style="color:var(--gold-dark);">The numbers don&apos;t lie</span>
+    <h2 class="cmp-h2">What you keep from<br/><em>£500 of handmade sales</em></h2>
+    <p class="cmp-sub">Etsy charges 6.5% transaction fee + £0.20 per listing + payment processing. That&apos;s your materials money walking out the door every month.</p>
+    <table class="compare-table">
+      <thead><tr><th>Platform</th><th>ArtisansWeb ✦</th><th>Etsy</th><th>Shopify Starter</th></tr></thead>
+      <tbody>
+        <tr><td>Monthly fee</td><td class="aw-col">From £10</td><td>£0 (but&hellip;)</td><td>£29+/mo</td></tr>
+        <tr><td>Commission per sale</td><td class="aw-col"><span class="check">✦ 0%</span></td><td><span class="cross">✕ 6.5%</span></td><td><span class="cross">✕ 0&ndash;2%</span></td></tr>
+        <tr><td>Kept from £500 of sales</td><td class="aw-col"><span class="check">~£490</span></td><td><span class="cross">~£450</span></td><td><span class="cross">~£461</span></td></tr>
+        <tr><td>Handmade products only</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="cross">✕ No</span></td><td><span class="cross">✕ No</span></td></tr>
+        <tr><td>Dedicated wellness space</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="cross">✕ No</span></td><td><span class="cross">✕ No</span></td></tr>
+        <tr><td>Your own branded shop</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="cross">✕ Etsy-branded</span></td><td><span class="check">✦ Yes</span></td></tr>
+        <tr><td>Marketplace audience included</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="check">✦ Yes</span></td><td><span class="cross">✕ No</span></td></tr>
+        <tr><td>Targeted handmade advertising</td><td class="aw-col"><span class="check">✦ Included</span></td><td><span class="cross">✕ You pay extra</span></td><td><span class="cross">✕ No</span></td></tr>
+        <tr><td>Legal docs included</td><td class="aw-col"><span class="check">✦ Yes</span></td><td><span class="cross">✕ No</span></td><td><span class="cross">✕ No</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="how">
+  <span class="sec-eye" style="color:var(--gold-dark);">Getting started</span>
+  <h2 class="how-h2">Open your shop in an afternoon</h2>
+  <p class="how-sub">No developers. No tech headaches. Any maker can be live the same day.</p>
+  <div class="steps">
+    <div class="step"><div class="step-n">1</div><h3>Sign up &amp; brand your shop</h3><p>Add your logo, colours, and maker story. Takes less than 20 minutes.</p></div>
+    <div class="step"><div class="step-n">2</div><h3>Add your products</h3><p>Upload photos, set prices and stock. As easy as posting on Instagram.</p></div>
+    <div class="step"><div class="step-n">3</div><h3>Connect Stripe</h3><p>Payments go straight to you. We never hold your money.</p></div>
+    <div class="step"><div class="step-n">4</div><h3>Start selling</h3><p>Your shop goes live in the main marketplace and the Wellness Corner. We drive the buyers.</p></div>
   </div>
 </section>
 
 <!-- ══ EMAIL ══ -->
 <section class="email-sec" id="notify">
   <div class="email-inner">
-    <img class="email-logo" src="logo.PNG" alt="ArtisansWeb"/>
+    <img class="email-logo" src="logo.png" alt="ArtisansWeb"/>
     <h2 class="email-h2">Be first through <em>our doors</em></h2>
     <p class="email-p">We&apos;re finishing the final touches on our shelves — handmade goods, wellness items, and everything in between.<br/>Leave your email and you&apos;ll be the first to know when we open.</p>
     <div class="email-row" id="email-form">
@@ -1159,7 +1283,7 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
 <!-- ══ FOOTER ══ -->
 <footer>
   <a class="fl" href="#">
-    <img class="footer-logo" src="logo.PNG" alt="ArtisansWeb logo"/>
+    <img class="footer-logo" src="logo.png" alt="ArtisansWeb logo"/>
     <span class="fn">Artisans<span>Web</span></span>
   </a>
   <div class="fr">
