@@ -445,7 +445,8 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
   gap:0.7rem;text-decoration:none;
 }
 .nav-logo-img{
-  width:48px;height:48px;
+  width:68px;height:68px;
+  max-width:68px;max-height:68px;
   object-fit:contain;mix-blend-mode:multiply;
 }
 .nav-logo-name{
@@ -491,9 +492,9 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
 
 /* Row 2 — flat nav links */
 .nav-bottom{
-  display:flex;align-items:center;justify-content:center;
-  gap:0;padding:0.2rem 1rem 0.4rem;
-  flex-wrap:nowrap;overflow-x:auto;
+  display:flex!important;align-items:center;justify-content:center;
+  gap:0;padding:0.3rem 1rem 0.5rem;
+  flex-wrap:wrap;overflow-x:auto;
 }
 .nav-bottom::-webkit-scrollbar{display:none;}
 .nav-bottom a{
@@ -562,8 +563,8 @@ footer{background:var(--charcoal);padding:2.2rem clamp(1.5rem,6vw,4rem);display:
 .hero{padding-top:calc(3rem + 96px);}
 
 @media(max-width:480px){
-  .nav-craft-left,.nav-craft-right{display:none;}
-  .nav-bottom{display:none;}
+  .nav-craft-left,.nav-craft-right{display:none!important;}
+  .nav-bottom{display:none!important;}
   .nav-hamburger{display:block;}
   .nav-top{padding:0.6rem 3rem;}
 }
